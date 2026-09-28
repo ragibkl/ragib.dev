@@ -24,16 +24,24 @@ read it once as a reader and publish.
      `sources/2015-bancuh-blog/`), including trust and privacy, and the promise
      not to block torrents.
    - `[?]` The Facebook story: the servers shut down, and a user tracked you down.
-2. **From zones to RPZ, and learning BIND on the way**
-   - The first GitHub commit (Feb 2017) already uses a response-policy zone
-     (`badlist`) and a Python "crawler" building it from hosts files.
-   - 2019 "adblock-v2" compiler rewrite; Feb 2020 null zone.
-   - First strangers using it: the "quick thanks" issue, Sept 2018 (#4).
-   - How the scope grew from "adservers only" (2016) to a strict family filter.
-3. **Rewriting the list compiler in Rust**
-   - Feb–Apr 2020: Python compiler replaced by Rust (PR #34, #42). The list
-     is compiled at image build time and baked into the Docker image.
-   - Servers added in Paris and Tokyo (Apr 2020, #52, #53).
+2. **The user who wouldn't let me turn it off** (drafted:
+   `src/content/posts/the-user-who-wouldnt-let-me-turn-it-off.md`), 2017–2020
+   - Feb 2017 open-sourced (BIND + nginx in Docker, ~50k domains, forwarding
+     to Google). 2017 shut down (USD 5/server, "no longer financially viable"),
+     Nov 2017 apology and self-hosting guide.
+   - A user in Vietnam finds you on Facebook. Back on DigitalOcean Singapore
+     (still today's sg-dns1/2). His requests: malware blocking (by 2018),
+     SafeSearch (#23, Feb 2020), a block page (#31), NextDNS-style customisation
+     (said no). Slow CDNs from Singapore (#32, #46): Vietnamese hosts blocked
+     the ports, Tokyo test server Apr 2020 (#53, today's jp-dns1).
+   - French users (#6, Aug 2019): Paris test server (#52, today's fr-dns1).
+     Tomatoide from Sept 2020. First thank-you Sept 2018 (#4).
+3. **Under the hood: from four hosts files to a Rust compiler** (2017–2021)
+   - First GitHub version already used a response-policy zone (`badlist`).
+   - 2019 "adblock-v2" compiler; Feb–Apr 2020 Python compiler rewritten in
+     Rust (PR #34, #42), the list compiled at image build and baked into the
+     Docker image; Feb 2020 null zone.
+   - `[?]` Why Rust, and was it your first Rust project?
 4. **Compiling on start, and what self-updating servers broke**
    - May 2021: BIND stops forwarding and resolves from the root itself (#92, PR #105).
    - Jun 2021–Jul 2022: config fetched from GitHub, list compiled when BIND
