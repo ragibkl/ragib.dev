@@ -1,6 +1,6 @@
 ---
-title: "Nine years of running a free DNS service"
-description: "What I learned running Bancuh DNS, a free public adblock DNS service, on my own time and money since 2017."
+title: "Eleven years of running a free DNS service"
+description: "What I learned running Bancuh DNS, a free public adblock DNS service, on my own time and money since 2015."
 date: 2026-09-28
 draft: true
 tags: [dns, bancuh-dns, self-hosting]
@@ -13,8 +13,10 @@ tags: [dns, bancuh-dns, self-hosting]
 
 ## How it started
 
-- 2017: `adblock-dns-server` created on GitHub as an ad-blocking DNS server
-  for personal use.
+- 2015: a Raspberry Pi 2 at home, then two rented servers, offered publicly
+  in the "ADblock your Wifi" blog series (Dec 2015 – Jan 2016). See
+  `sources/2015-bancuh-blog/` and the "how Bancuh DNS started" post.
+- Feb 2017: `adblock-dns-server` created on GitHub.
 - The name: bancuh.com was a spare domain. Users started calling the service
   "Bancuh DNS" and it stuck. *Bancuh* is Malay for *to mix*, and the
   blocklist is a mix of dozens of lists.
@@ -111,5 +113,5 @@ no to people who clearly liked the service?
 
 ## What I'd do differently
 
-**Your words:** Looking back over nine years, what would you tell yourself in
-2017?
+**Your words:** Looking back over eleven years, what would you tell yourself
+in 2015?

@@ -1,0 +1,75 @@
+This is Part 3 of the series, “ADblock your Wifi”. In this series, I will share with you how to ADblock you entire home wifi network, effectively stopping web advertisements from entering your entire Wifi network at home. This protects your web browser, your PC, your phones, tablets, and any other devices using the same wifi connection.
+If you have been following this series from the beginning, then you should already have everything you need to set up adblocking on your Wifi network. In this part, we discuss the details of how this adblocking technique works. Interested? Read on.
+In Part 1, we discussed that commonly, adblocking is a manual and tedious process, and limited in its application. We compared Adblock browser plugin (and its variants) and also AdAway for Android devices. We concluded that Adblocking at the Wifi network level is much more convenient since all connected devices are covered.
+In Part 2, I explained how to set up you Wifi router, to leverage my DNS Firewall servers, to adblock your Wifi network. If you have done that already, you should already benefits from all that missing ads.
+Using this adblock requires that you use my DNS Firewall service. Although this costs you nothing at all, I feel that I am not being fair if I don’t at least explain how it works, what goes on in the background, and how this adblock might affect you. To be fair, I also plan to go into the details to address various concerns such as security, and privacy issues. Hence, this post.
+While others are content with just applying the adblock, perhaps you are just curious and needs a little more understanding before using it. Perhaps you already applied it to you Wifi network, but have other concerns that needs to be addressed. Then this post is just for you.
+Moving on.
+IP addresses and the Internet
+Before we go any further, I feel it is better if we do a quick recap about some concepts of the Internet. The internet is in simple terms, a network of connected computers, spanning the world. Computers that hosts contents such as websites, blogs, pictures and videos, are called servers. Servers hosts contents and provides them when people needs to access them. Computers and other devices that are used to access these contents are called clients.
+Servers usually have an IP address that tells other computers where to find them. These IP address are also public, allowing clients (and sometimes other servers) to find them on the internet. Clients usually have a private IP address, not accesible from the internet. Clients (PCs and mobile devices alike) usually sit behind a router or a proxy, and their private IP addresses are valid only to the network they belong to. This is okay for clients since they don’t host contents, and there is no need for other computers to find them.
+When a client needs to request contents from servers, it needs 2 things; resource being asked, and the IP address of the server with the resource. For example, for this website:
+resource/url = bancuh.com
+IP = 212.47.232.209
+Classically, to access this website, you would have to type http://212.47.232.209/bancuh.com/
+That’s a pain. Nobody wants to remember IP addresses all the time. Plus they look ugly. Even searching google for this site would becomes tedious. It becomes more pain when content providers have to migrate servers. Yeah, that does happens. For example, let’s say I can no longer host this website on this server, and have to set up another one, then of course the IP address would be different as well. I can’t easily redirect readers to use a new IP address. That would be impractical.
+Fortunately nowadays, computers don’t have to be told specifically the IP address of a server for each resource and content. As you must have noticed, you never have to type the IP address of anything anywhere. As long as a resource have a valid domain-name, the client figure out the IP for itself. Going back to our example;
+resource/url = bancuh.com
+client implies,
+resource/url = http://bancuh.com
+protocol = HTTP
+domain-name = bancuh.com
+resource on server = /
+IP Lookup = 212.47.232.209
+when you type in “bancuh.com” on the address bar of your browser for example, it automatically implies “http://bancuh.com”, as that is most common. Since bancuh.com is a valid domain-name, it does the domain-name to IP address translation in the background, so it knows to look for the resource “bancuh.com”, at the server with IP “212.47.232.209” using HTTP protocol. You don’t have to type the IP address in, the client does the IP lookup by itself.
+Let’s do another example:
+resource/url = bancuh.com/2015/12/19/adblock-your-wifi-part2/
+client implies,
+resource/url = http://bancuh.com/2015/12/19/adblock-your-wifi-part2/
+protocol = HTTP
+domain-name = bancuh.com
+resource on server = /2015/12/19/adblock-your-wifi-part2/
+IP Lookup = 212.47.232.209
+This is to demonstrate how a client identifies the domain-name on a longer resource. Again this works because client computers knows how to look up for the IP of a domain-name.
+For content providers, sometimes we have to embed contents from other servers, or insert links to contents on other websites. For example, a link to a group on Facebook, or an embedded video from YouTube. These are coded using urls/resources with domain-names “facebook.com” and “youtube.com”, and not IP addresses. When you open up a web page with an embedded content, your browser tries to load those contents and your client device lookup the IP address during run time. You can appreciate the importance for IP lookup on the Internet.
+DNS and the Internet
+As I have demonstrated above, knowing the IP addresses of servers is very important for clients to access contents hosted on servers correctly. Equally important is the ability of clients to infer the IP address of servers based on valid domain-names. This also allows content providers to link content from other websites, without using IP addresses.
+This works due to a system on the Internet called Domain Name System (DNS). DNS, is like an address book system for the Internet. DNS allows connected clients devices to find the answer for the question, “What’s the IP address for this domain-name?”
+The Internet relies on DNS to work correctly, for the following:
+Nobody wants to remember IP address all the time when accessing contents, it’s too much.
+IP addresses may change when content providers have to migrate servers, while domain-names stay the same.
+DNS allows content providers to embed contents from other services, by referring only to the domain-name. The IP of those services is resolved in run-time when a user’s browser tries to load those contents.
+How IP lookup and DNS works
+When you type bancuh.com in your address bar, your browser needs to load content from the server with the IP address for the domain “bancuh.com”. On your client device, IP lookup is not handled by the browser, but by a client software called a DNS Resolver.
+Let’s do an exercise. Open command prompt. Run the following:
+nslookup bancuh.com
+server : [DNS server name/IP]
+address : [DNS server-IP]
+Name : bancuh.com
+Address : 212.47.232.209
+Yeah, it is a simple exercise. You can lookup the IP addresses for any domain-names that you want. The first 2 lines; Server & Address are important. As you can see, usually your client device cannot perform a lookup by itself. It has to query a DNS server for the answer. A DNS server is a server that answers DNS queries with a valid IP address for the domain-names, helping clients perform IP lookups.
+For most people on Wifi network, their client device’s designated DNS server is their Wifi router. In Part 2, I showed you where this setting is. For some people, this is Google’s DNS servers instead. However, routers don’t perform DNS lookups themselves, they usually forward queries to an external DNS servers, usually your ISP’s DNS servers. Some folks also adjust their router to query Google’s or OpenDNS’s server instead.
+DNS Firewall
+I mentioned above that a working DNS system allows content providers to embed contents from other services, including ADVERTISEMENTS. In full here’s how it works.
+You open an app to load a resource from the internet using domain-name.
+The app tries to load the content, but the client device need to lookup the IP.
+Your client device performs an IP lookup, and sends a query to you router.
+Your router performs an IP lookup, and sends a query to an external DNS server.
+The external DNS server returns a valid IP to the router, which returns it to the client.
+Your browser loads the resource, from the server with the valid IP address.
+Loaded contents include embedded advertisements.
+Your client performs IP lookup for ad-servers.
+Valid IP addresses for ad-servers are used by your browser to load advertisements.
+BUMMER!!
+That’s right. DNS is important, it keeps the Internet running. When we need to browse for actual contents on the Internet, a good working DNS system works for us. When advertisements are involved, not so much. So, how do we stop ads from loading, and at the same time allow us to browse for legitimate contents on the Internet?
+If you guessed “SABOTAGE the DNS queries for ad servers!!!” then you are absolutely right!
+Actually, I am not sure if you could actually guess this one. That’s right. Sabotage the DNS queries, but only for ad-servers. What we need is for IP lookups of ad-servers to fail. In this way, we can still use the Internet but ads would stop loading.
+The technique that I propose, is to set up a DNS Firewall and to forward all our DNS queries to that DNS Firewall.
+The hard part is to set up the DNS Firewall servers. A DNS Firewall server act similar to other DNS servers, such as Google’s, OpenDNS’, or even your ISP’s. All that they do, is to resolve domain-names to the correct IP addresses. However, when it comes to known ad-servers it would return invalid IP addresses. I have already set up 2 such servers for you to use for FREE. You can thank me for that.
+The easy part, is to forward all DNS queries to the DNS Firewall servers once they are setup correctly. In Part 2, I showed you how easy it is to do this for your entire Wifi network. You can thank me for that as well. These 2 servers can help stop ads on thousands of households, for thousands of users.
+If we set this up correctly, then all your DNS queries goes to my DNS Firewall servers. Queries for domains serving actual legitimate contents are replied with valid IP addresses. This ensures that valid contents are loaded correctly. However, queries for domain-names of ad-servers are replied with faulty addresses. This causes ads to fail to load. I will make sure that you keep getting faulty IPs for ad-servers, and ads would continuously fail to load on your end. This stops ads from loading on your Wifi network, on all connected clients. Pretty neat right?
+Summary
+In this article, we learn how DNS works and powers the Internet. It would be a totally different place without it. However, it also works against us when it also helps ensure ads load correctly. To make it work for us again, we sabotage the DNS operations, to stop ads from loading.
+This can be done several ways, but what I am opting here is to set up 2 DNS firewall servers, and have anyone interested, forward their DNS queries to those servers. I do the hard part. These 2 servers can serve thousands of households to stop ads.
+All you have to do is forward DNS queries to me. I already showed you how to do that in Part 2 of this series. Now you know how it works. Of course, this brings even more questions and concerns on the table, which I will address in a later article. This one’s gone long enough.
+Till next time, Barista signing off.

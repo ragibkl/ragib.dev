@@ -13,18 +13,23 @@ read it once as a reader and publish.
 
 ---
 
-## Series 1: Bancuh DNS (2016?–2026)
+## Series 1: Bancuh DNS (2015–2026)
 
-1. **Why I built my own adblock DNS**
-   - An Android ad-blocking app that used just four hosts files. `[?]` Which app?
-   - The first version: BIND with authoritative zones and a Python script.
-     This predates the GitHub repo. `[?]` When, and for which devices/network?
-   - `[?]` Why DNS instead of a browser extension or hosts file?
+1. **Blocking ads for the whole house: how Bancuh DNS started** (drafted:
+   `src/content/posts/how-bancuh-dns-started.md`)
+   - 2015: learning web hosting, DNS clicks as an ad blocker. Raspberry Pi 2
+     at home with BIND zones and a Python script, using AdAway-era lists.
+   - Power cuts and SD cards: moved to two rented servers, went public.
+   - "ADblock your Wifi" blog series, Dec 2015 – Jan 2016 (recovered in
+     `sources/2015-bancuh-blog/`), including trust and privacy, and the promise
+     not to block torrents.
+   - `[?]` The Facebook story: the servers shut down, and a user tracked you down.
 2. **From zones to RPZ, and learning BIND on the way**
    - The first GitHub commit (Feb 2017) already uses a response-policy zone
      (`badlist`) and a Python "crawler" building it from hosts files.
    - 2019 "adblock-v2" compiler rewrite; Feb 2020 null zone.
    - First strangers using it: the "quick thanks" issue, Sept 2018 (#4).
+   - How the scope grew from "adservers only" (2016) to a strict family filter.
 3. **Rewriting the list compiler in Rust**
    - Feb–Apr 2020: Python compiler replaced by Rust (PR #34, #42). The list
      is compiled at image build time and baked into the Docker image.
@@ -47,8 +52,8 @@ read it once as a reader and publish.
    - Mar 2024: an internal BIND as the resolver behind bancuh-dns (#200).
    - Aug 2026: dnsleaktest.com's malformed EDNS answer, a bug that turned
      failures into empty answers, and the switch to Unbound (#218).
-8. **Nine years of running a free DNS service**: the retrospective. Draft
-   outline in `src/content/posts/nine-years-of-bancuh-dns.md`.
+8. **Eleven years of running a free DNS service**: the retrospective. Draft
+   outline in `src/content/posts/eleven-years-of-bancuh-dns.md`.
 
 Side posts, any time after 5: monitoring DoH properly (dns-monitor, Gatus),
 and benchmarking DNS filters at 8 million entries (once dns-filter-bench exists).
