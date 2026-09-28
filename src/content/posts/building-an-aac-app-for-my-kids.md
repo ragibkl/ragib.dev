@@ -63,9 +63,6 @@ Ragib.
 I built the app on my laptop, installed it on my kids' tablets, and we started
 using it ourselves at home, long before anyone else did.
 
-`[Optional: was there a moment it clicked for your kids? The first thing they
-"said" with it, or something they could suddenly tell you?]`
-
 ## RM500,000
 
 When it was working well at home, I showed it to the teachers and a speech
@@ -84,13 +81,27 @@ that is cost rather than difficulty.
 
 ## Working with the centre
 
-I published GibTalk on the Google Play Store and asked people to try it.
+I published GibTalk on the Google Play Store, for free, and asked people to
+try it. Cost was part of why I'd built it in the first place, and the thing
+already existed. I wanted it to be free for everyone.
 
 At first, the centre was understandably careful. A parent turning up with a
 free app raises fair questions: why is it free, what's the catch, and would
-recommending it be a conflict of interest? I offered to hand the app over to
-them entirely, so it would belong to the centre rather than to me. But they
-didn't have a digital team that could own and maintain an app.
+recommending it be a conflict of interest?
+
+They asked what it would cost to keep running. The honest answer was: very
+little. The only running cost is a small server for searching picture symbols,
+a few US dollars a month, which I pay myself. That's what lets the app stay
+free and open source.
+
+They also asked about privacy, which mattered a lot for an app used by young
+children. GibTalk works offline first. There's no account and no login, no
+analytics, and no data collected at all. The words and pictures you set up
+stay on the tablet.
+
+I offered to hand the app over to them entirely, so it would belong to the
+centre rather than to me. But they didn't have a digital team that could own
+and maintain an app.
 
 So we worked together informally instead. The teachers helped me build
 ready-made word sets for the things the children actually do: greetings,
@@ -105,8 +116,6 @@ I built a small API of my own for symbol search, and in June 2025, GibTalk
 arrived on the Apple App Store too. It's still free, with no ads, and the code
 is [on GitHub](https://github.com/ragibkl/GibTalk). As far as I know, the
 centre still uses it today.
-
-`[Optional: anything you'd want another parent in your position to know?]`
 
 If you're a parent whose child has just been told they need an AAC app, and
 the price made you pause, GibTalk is free on
