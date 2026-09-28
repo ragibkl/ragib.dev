@@ -52,7 +52,7 @@ Honestly, I felt guilty. And I was surprised: someone had cared enough about
 this little side project to track me down on Facebook. I pointed him to other
 adblock DNS services that would serve him better than I could. He wanted mine.
 
-So I brought it back, on two new DigitalOcean servers in Singapore. Those
+So I brought it back, on two DigitalOcean servers in Singapore again. Those
 two servers are still running today, as `sg-dns1` and `sg-dns2`.
 
 ## A persistent user
