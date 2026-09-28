@@ -133,4 +133,4 @@ Bancuh DNS was for. The users were, one issue at a time. The part I could
 control was how honest I was about what it could and couldn't be.
 
 Next in the series: what all those new lists and servers did to the code
-underneath, and why I rewrote the blocklist compiler in Rust.
+underneath, and [why I rewrote the blocklist compiler in Rust](/writing/learning-rust-for-a-blocklist-compiler/).
