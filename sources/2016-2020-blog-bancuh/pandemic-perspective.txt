@@ -1,0 +1,39 @@
+URL: https://blog.bancuh.com/pandemic-perspective/
+Snapshot: 20200803210830
+Posted: 2020-06-02
+
+It’s been a while since I last posted any updates on this blog. I believe, it’s almost 3 years since I last wrote anything on this site. Here’s a short rant from me.
+A lot has changed since then. As I write this, the world has been shocked by the Covid-19 Coronovirus pandemic. With that, governments the world over took measures to contain it, including imposing lockdown or movement restrictions on the citizens. Here in Malaysia is no exception.
+Remote Working
+Previously, my workplace has a very flexible remote working arrangement. Most people come to the office for work, but once or twice a week, it is quite acceptable to work from home instead. There are cases where you have an errand to run, or you are waiting for a repairman to come over your home to fix something, where if you could work from home, it makes things a lot easier.
+In my case, I usually take advantage of this flexibility, if the weather gets too harsh to commute safely. I ride my motorcycle to the office, and when it rains, roads can get slippery and dangerous.
+When the lockdown was put in place, it makes it impossible for employees to still commute to the office to work. The office at my workplace had instructed everyone to work remotely from home. It takes a while to adjust to the new norm.
+In my case, the transition into remote working during lockdown went smoothly. Right before the lockdown, I made it a point to work from home at least once or twice a week. The reason being that I wanted to get used to the concept of working from home. I wanted to familiarize myself with the workstation at home, in the hope of also increasing my time spent on coding practice. The idea was that, if I write more codes at home for work, eventually I’ll get used to the idea, and would naturally find some coding exercise or side-project that I can code as well.
+Things I Like
+Working remotely has its benefits.
+For one, I’m no longer spending hours on the road commuting to-and-fro to the office, or walking about during lunch time looking for food. That precious few hours that we get back can be spent with the family, or on doing some additional reading.
+Secondly, commute is tiring. The first week working from home, I felt quite rested. Riding the bike to the office is fun, but going through heavy traffic everyday gets to me.
+I’m also saving a bit more on daily expenses during work from home. I suppose the occasional trips for coffee, bubble tea, snacks and other beverages while at the office does rack up to some amount. At home, I just make my own coffee and the light snacks around where I live is a lot cheaper. I am also saving more on petrol since I’m not commuting so there’s that.
+Things I Missed
+However, being stuck at home gets pretty boring pretty quick.
+On the third week, I already miss riding the motorbike to the office, and the fancy afternoon coffee. I miss the fancy lunch places. I miss people asking me for technical help. I miss the witty banters with people way smarter than I am.
+I used to stay back at the office for an hour or so to wait for the traffic to subside. That time is then also spent on some light learning, which comprise mostly of tech talks on YouTube, or some light technical reading. The office environment has a way of making me focused and as such, after-hours idle time at the office becomes a natural way for me to learn organically. I miss that very much.
+Most of all, I miss going out on a whim, for no particular reasons.
+Perspectives
+Being confined to working from home does put my mind into a certain perspectives. Being a software engineer by trade, I am lucky to still have a job, and to be able to continue working remotely. Globally, plenty of people have lost their jobs and livelihood due to the imposed lockdown orders. Some were forced to take reduced working hours with reduced wages.
+It is during pandemic that I realized just how lucky I am to be in this profession. Even during a pandemic such as this, I am still able to stay employed. While it does take some time to adjust, I find that I can be just as productive as when I’m at the office, when I am working from home.
+Most companies have put on hold hiring for new employees. However, there seems to be a healthy demand to hire software engineers even during this outbreak. I can still see job vacancies for software engineers still being posted, and I know of some in the field who are interviewing for jobs remotely.
+I got lucky.
+Of course, things could have turned out for the worse for me as well. All of the convenience that I take for granted, this job, this profession, could all go away someday, and when that happens, I am caught unprepared. I might be lucky this time around, but there is no guarantee for the same when another such global calamity hits the world again in the future.
+I keep hearing advice, to set aside some some emergency funds, about a few months’ salary worth, just to prepare for some calamities such as this. I didn’t take that advice too seriously, but now I know where it’s coming from. I should probably start saving soon.
+Remote work is a thing now. With employees being prevented entry to their offices, the pandemic has forced companies globally to finally embrace remote working. Rather than debating the pros and cons of remote working, we are now put into an experiment and we get to see how it performs at full scale.
+Personally, I love the flexibility of working from home. There are some days when I’m just lazy to go out, and would rather just get some work done from home. Before the lockdown, I was already doing 50% – home / 50% – office work setup. However being forced to makes me feel trapped and helpless.
+It also did not help that when the lockdown started, I was out of town and was caught without my usual workstation setup. Internet connection was sketchy at best, and it really caught me off guard.
+However I did find myself to be just as productive as when at the office. When all this is over, I can picture myself working more days at home for some weeks.
+Also, I think getting used to remote working opens up more avenues for making income for me. I could take up freelance programming work. I could potentially find employment remotely with a company based outside of the country, and do everything online. I’m not sure how well that will work out, but it’s a possibility.
+It is all just part of the new learning.
+Final Thoughts
+I think the current coronavirus pandemic puts everyone into a spot, where we are forced to learn and adapt to the new situation.
+I hope this pandemic ends soon. I also hope that we can recover and come out of this stronger than before.
+Cheers.
+ Posted in: Rants, Uncategorized

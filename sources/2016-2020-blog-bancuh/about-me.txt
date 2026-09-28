@@ -1,0 +1,21 @@
+URL: https://blog.bancuh.com/about-me/
+Snapshot: 20180819010417
+Posted: ?
+
+Hi There. WELCOME!
+Welcome to this site. This is my personal blog where I discuss tech and give out random rants.
+I also plan to display current tech projects on this site.
+Who am I?
+Hi, my name is Ragib, and I am a tech geek. I am all about learning technology, and using it to share information.
+During the day, I work as a Software Developer at a local IT company. Currently, I mainly work with web development using Python, Django, Html, CSS, JavaScript and jQuery. I also work extensively with React Native framework, for mobile app development. I hope to do some work in React JS as well, to gain a bit more front-end development experience. I also hope to dive a bit deeper into DevOps, Linux administration and container orchestration work.
+As you can see, my development stack is less Enterprise-y, and more Open Source-ish.
+I love doing what I do, and am one of the lucky few to end up getting paid for it.
+When I am free, I use my time to learn as much about technology as possible, and also tinker with some side projects. Currently, I am interested in web and micro-services hosting, and the Linux OS. My focus is mainly on tech that I can deploy right away, to complement my current workflow.
+I hope you have as much fun browsing the site, as I did writing them. Feel free to browse the site and drop a comment. I welcome any suggestions you might have for the site.
+Cheers!
+– Ragib –
+ Leave a Comment Cancel Comment
+Name * 
+Email * 
+Website 
+Currently you have JavaScript disabled. In order to post comments, please make sure JavaScript and Cookies are enabled, and reload the page. Click here for instructions on how to enable JavaScript in your browser.

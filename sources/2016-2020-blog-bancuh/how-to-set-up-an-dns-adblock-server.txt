@@ -1,0 +1,53 @@
+URL: https://blog.bancuh.com/how-to-set-up-an-dns-adblock-server/
+Snapshot: 20180818235831
+Posted: 2017-11-06
+
+In my past blog posts I’ve been sharing how you can, with a few simple steps, you can easily block ads on your wifi network. This technique however requires that you find a running adblock DNS server that you can use.
+In this post, I show you how you can set up your own caching Adblock DNS server.
+Read on.
+DNS requests to complete strangers
+If you have been following my posts about this technique, I’ve highlighted several issues. Here, I mention them again, plus some additional ones I’ve discovered.
+You have to trust me when you use my DNS server. If I was a malicious host, I could keep track of your DNS requests, to find out what websites you’ve been visiting. If the site you are visiting do not implement https, then I could even conduct a DNS poison attack against you.
+We have to trust that my servers are not compromised. If another malicious person took over my servers, he/she could use them against you similar to 1.
+Reliability. Now, if my servers stopped working, (as it did months ago) you lose your internet. While it is an easy fix to simply change to another set of DNS servers to use, it becomes a problem if you are not on-site to make the changes.
+Choice. You cannot choose which ad-domains to whitelist, or which sources to use. You have to use whatever I provide.
+If you’ve been using my DNS servers until recently, you’ll know that I took down my servers. It was no longer financially viable for me to keep them running. Yeah, if you were using, I kinda screwed you over. Sorry about that.
+The easy fix to that is to simply find alternative adblock DNS servers. example: https://adguard.com/en/adguard-dns/overview.html
+However, you still cannot get away from the issues I highlighted above. I propose that you take responsibility of adblocking, and run your own servers.
+Running your own Adblock DNS Servers
+Granted that running DNS servers is no easy task. To overcome this, I’ve come up with a simple project to allow anyone to easily set this up on their own DNS servers. You need the following though:
+Hardware
+You need Linux servers that you can ssh into, and run commands as root. I recommend a fairly trusted VPS provider with a simple setup, and low price. Something like digitalocean, linode, ramnode, or vultr will do just fine. They are fairly cheap to rent, and the servers are easy to set up. Scaleway is also a favorite host of mine.
+If you are completely new to this, you should go with digitalocean. To me, they are the easiest to set up, since they have a lot of documentation for newbies. They also charge you hourly, with a very low monthly price. So you could spend a few cents, to try running this for a few days. Pretty neat.
+If you just want to run some tests locally, you could also spin up some servers in Virtualbox to see if this works. But, you have to figure out Linux server installation, and setting up Virtualbox yourself.
+If you also have a spare Linux server lying around in your network, you can use that as well. Keeping the server in your network is actually safer, as it reduces the surface of attack.
+Software
+In terms of distro choice, you can use any Linux distribution you like. But, go for the vanilla ones. Don’t go for complete server solutions such as Avahi, or OpenMediaVault or anything like that. We just need something plain here.
+Your server(s) needs to be able to run Docker, docker-compose, and have Python3 installed. So, make sure you can install and run these on your distro of choice.
+In terms of architecture, stick to something that supports x86 architecture, so no Raspberry PI this time. The docker images I provide run on x86. You could try porting them over to arm, but that’s up to you.
+Knowledge
+As if this was not obvious enough, you need to have some basic Linux and BASH knowledge to do this. I won’t be able to hand-hold you through this process, cause your setup might be different than what I had.
+You need to be able to setup your server, set up ssh on the server. You should also be somewhat comfortable to ssh into your server, and run commands on them. Also, you need to know how to install the software I mentioned.
+Instructions
+SSH into your server.
+Install docker, docker-compose, and python3. Make sure they run properly.
+Visit my project site at https://github.com/ragibkl/adblock-dns-server.
+Follow instructions there to get you DNS adblock server up and running.
+Check the settings.py file, to see if anything needs adjustments.
+I’ve written some simple instructions on the project site for you to follow. At the end, you should end up with a functioning DNS server, that also blocks ads. Pretty neat huh?
+Explanation
+The instructions I have written on the project page should be enough to get you running, but they are a little over-simplified. If you managed to get them running, and are curious how it works, I’ll try to explain them a bit here. Do note that the following content might get a little too technical. I might get a few facts wrong, but for the curious, read on.
+Here goes.
+Basically, what we want to do here, is to spin-up a bind9 dns server, and an nginx server. Bind9 listens to dns requests and forwards them to google dns servers. However, ad-domains are asked to be redirected to the nginx server instead. All the nginx server does, is return no-content to each http/https request.
+When you start the script, it will run a python3 program, that does the following. First, it builds a bind9 dns-server null zone file, where ads goes to die (he he). Any dns queries that goes for ads, are redirected to the null zone. The null zone basically contains some basic config for the null zone, and also the redirect-ip.
+Second, the program will download a list of ad-domain from several sources. It then exports them into a dns blacklist file, for bind9 to use. The blacklist will contain up to 50,000 ad-domains.
+The program itself is actually quite simple. If you savvy some python3 programming, you should read them up. Have any suggestions? Relay some feedback and pull request my way.
+The script then use these files, to build two docker containers; one for the nginx server, and another for bind9. It then spins up the images together, in a single docker-compose setup.
+Configuration
+You should not have to configure anything for this to work. It should just spin up and start blocking ads. Pretty simple. However, there is a chance that you might have to change the redirect IP, or domain-name for that matter. You can go into the settings.py file to change them. You can also choose which sources to use for building the ad-domains list, or ad your own.
+If you want to manually blacklist, or whitelist certain domains, you may have to manually change the blacklist file, and restart the docker containers. I have not implemented any whitelist/blacklist mechanism yet.
+Conclusion
+If I remember correctly, I mentioned somewhere that I’ll share with you how to spin up your adblock dns servers. I believe this satisfies that promise.
+I hope that this article is useful to you. Spin up some servers, and go help others block ads.
+Happy hosting.
+ Posted in: Uncategorized

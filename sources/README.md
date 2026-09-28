@@ -13,6 +13,17 @@ Material for writing posts. Not published on the site.
   - `adblock-your-wifi-part4.txt`: 9 Jan 2016, the Raspberry Pi origin, trust,
     privacy, security, blocklist sources
 
-Other archived snapshots worth a look: `blog.bancuh.com` (2017–2021) on the
-Wayback Machine, including its Adblock DNS quick start, FAQ and "How to set up
-an DNS Adblock Server" post.
+- `2016-2020-blog-bancuh/`: pages from blog.bancuh.com, the blog's second
+  home (Nov 2016 onward), recovered the same way. Each file starts with its URL,
+  snapshot and post date.
+  - `adblocking-dns.txt`, `adblock-techniques-reviewed.txt`,
+    `how-to-enable-adblock-on-your-wifi.txt`: Nov 2016 rewrite of the series
+  - `shit-happens-updates-and-such.txt`: Jun 2017, life and Fedora rants
+  - `how-to-set-up-an-dns-adblock-server.txt`: 6 Nov 2017, the self-hosting
+    guide, and the apology for shutting the servers down ("no longer
+    financially viable")
+  - `adblock-dns.txt`, `adblock-dns-faq.txt`, `adblock-dns-quickstart.txt`,
+    `support.txt`: the service pages as of Aug 2018, back online as
+    dns1/dns2.bancuh.com on the same DigitalOcean IPs as today's sg-dns1/sg-dns2
+  - `about-me.txt`: Aug 2018
+  - `pandemic-perspective.txt`: Jun 2020
