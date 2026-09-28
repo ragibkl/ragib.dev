@@ -1,8 +1,8 @@
 ---
 title: "Building an AAC app for my kids"
 description: "When my autistic kids needed a communication app, the good ones cost around USD 200 and the free one had stopped working properly. So I built GibTalk, and their early intervention centre helped shape it."
-date: 2026-09-28
-draft: true
+date: 2026-09-28T20:00:00Z
+draft: false
 tags: [gibtalk, aac, autism, react-native]
 ---
 
