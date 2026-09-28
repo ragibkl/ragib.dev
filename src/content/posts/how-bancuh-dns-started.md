@@ -2,7 +2,7 @@
 title: "Blocking ads for the whole house: how Bancuh DNS started"
 description: "In 2015 I was learning web hosting and realised a DNS server could block ads for every device at home. It started on a Raspberry Pi, and eleven years later it's still running."
 date: 2026-09-28
-draft: true
+draft: false
 tags: [dns, bancuh-dns, raspberry-pi, self-hosting]
 ---
 
@@ -90,8 +90,8 @@ router's password, change one setting, and their ads were gone as well.
 In December 2015 I started a WordPress blog on bancuh.com, "BANCUH – Tech &
 Rants", signing my posts as "Barista". My first real series was "ADblock your
 Wifi": four posts on why to block ads on the Wi-Fi, how to change your router,
-how DNS blocking works, and one I'm still quietly proud of, on the concerns.
-Because I was asking strangers to send every website they visited through my
+how DNS blocking works, and a last one on the concerns, which I'd probably
+write the same way today. I was asking strangers to send every website they visited through my
 servers, and I knew exactly how that sounded:
 
 > I am just some random guy you found on the Internet, you have to trust me a
