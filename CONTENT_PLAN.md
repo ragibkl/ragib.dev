@@ -91,7 +91,7 @@ and benchmarking DNS filters at 8 million entries (once dns-filter-bench exists)
 
 Written for other parents of autistic children as much as for developers.
 
-1. **Why I built an AAC app for my child**
+1. **Building an AAC app for my kids** (published: `src/content/posts/building-an-aac-app-for-my-kids.md`)
    - `[?]` The personal story: what your child needed, what you tried
      (JABtalk and others), and what was missing.
 2. **Building it**
