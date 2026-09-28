@@ -6,137 +6,143 @@ draft: true
 tags: [dns, bancuh-dns, raspberry-pi, self-hosting]
 ---
 
-This is the first post in a series about [Bancuh DNS](https://bancuh.com), a
-free public DNS service that blocks ads. It has been running for about eleven
-years, and most of what I learned along the way lives in commit messages, old
-GitHub issues and a blog that no longer exists. I dug through all of that with
-[Claude Code](https://claude.com/claude-code) to piece the history back
-together, including my own blog posts from 2015 recovered from the Wayback
-Machine. This series is me writing it down properly.
+In 2015, I kept running into the same small annoyance. I liked trying out new
+Android apps, and so many of them had a banner ad glued to the bottom of the
+screen. Not a big deal on its own, but it was everywhere, and it was on my
+family's phones too.
 
-## 2015: learning how the web works
+I knew there was a fix. [AdAway](https://adaway.org) could block ads on
+Android by filling the phone's hosts file with thousands of known ad server
+names, so the phone simply couldn't find them. I liked it a lot. But it only
+worked on a rooted phone, and rooting was hard, risky, and not something I was
+going to do to my family's devices. Browser extensions didn't help either:
+everyone at home was on their phones, not on a laptop with Chrome.
 
-In 2015 I was teaching myself web development in my free time, and that
-meant learning everything around it too: renting a server, installing Linux,
-registering a domain, and pointing it at a web server. I registered
-bancuh.com, simply because I liked the name and it was available. (*Bancuh* is
-Malay for *to mix*, as in stirring a drink.) By the end of the year it also
-hosted a WordPress blog, "BANCUH – Tech & Rants", where I signed my posts as
-"Barista".
+At the time, I was teaching myself web development in my spare time, which
+meant learning everything around it too. I was renting a server, installing
+Linux, registering a domain, and figuring out how to point that domain at my
+server. I'd picked up bancuh.com, a name I liked that happened to be available.
+(*Bancuh* is Malay for *to mix*, as in stirring a drink.)
 
-Learning how domains work meant learning DNS: the system that turns a name like
-`bancuh.com` into an IP address. Somewhere in there it clicked. **If you
-control the DNS server, you control the answers.** Ads come from ad servers,
-ad servers have names, and a DNS server could simply refuse to give the right
-answer for those names.
+Learning how domains work meant learning DNS, the system that turns a name like
+`bancuh.com` into the address of a server. And somewhere in there, it clicked.
+Every ad on those phones came from an ad server, and every ad server had a
+name. When a phone wanted to show an ad, the first thing it did was ask a DNS
+server where that name lived. **If I ran the DNS server, I could simply give
+the wrong answer.**
 
-## The problem I wanted to solve
+The best part was that I wouldn't have to touch anyone's phone. At home,
+everyone was on the Wi-Fi, and the Wi-Fi router told every device which DNS
+server to ask. I had the router's admin password. Change one setting there, and
+every phone in the house would be covered.
 
-Ads were everywhere, and blocking them was a per-device chore. Here's how I
-put it at the time, in the first post of a series I called "ADblock your
-Wifi":
+## A Raspberry Pi under the router
 
-> Adblock extension for Chrome / Firefox work well, but are limited to
-> PCs/Laptops only.
+The first version ran on a Raspberry Pi 2 at home. I installed
+[BIND](https://www.isc.org/bind/), the classic DNS server, and wrote a Python
+script that downloaded four well-known blocklists, including the ones AdAway
+used, and turned them into zone files. For ordinary names, BIND answered
+normally. For ad servers, it answered with an address that led nowhere useful,
+and the ad simply failed to load.
 
-Browser extensions only covered one browser. On Android there was
-[AdAway](https://adaway.org), which blocks ads by filling the phone's hosts file
-with thousands of known ad server names, but it needed a rooted phone. iPhones
-couldn't do it at all. And every family member's device had to be set up
-separately.
+It wasn't elegant. Whenever I wanted to update the list, I'd SSH into the Pi,
+copy the script over, run it to rebuild the zones, and restart BIND. But it
+worked. The banner ads disappeared, on every phone in the house, and nobody
+had to install anything.
 
-But every device at home used the same Wi-Fi router, and the router told every
-device which DNS server to use. Change that one setting, and every phone,
-laptop and tablet in the house would be covered.
-
-`[Your take: what did your family think? Were the ads on someone else's device the trigger?]`
-
-## Version one: a Raspberry Pi and some zone files
-
-The first version ran on a **Raspberry Pi 2** at home. It was
-[BIND](https://www.isc.org/bind/), the classic DNS server, with a Python script
-that downloaded four well-known blocklists, including the ones AdAway used
-(`adaway.org`, Peter Lowe's list, MVPS and hpHosts), and turned them into zone
-files. For ordinary names, BIND answered normally. For ad servers, it
-answered with the wrong address on purpose. In the version I later made
-public, that was the DNS server's own address, where a small web server
-replied to every request with a 404 page. Either way, the ad simply failed to
-load.
-
-It worked. Ads disappeared from every device in the house.
-
-`[Your take: anything you remember about building it? What was hard?]`
+My family thought it was cool. I'm not sure they ever really understood what I'd
+done, but they could see the ads were gone, and that was enough.
 
 ## Then the power went out
 
-The flaw wasn't in the DNS. It was in where the DNS lived. In early 2016 I
-wrote:
+What I hadn't thought about was what would happen when the Pi stopped working.
+
+We had power cuts at home now and then. When the power came back, the Pi would
+boot, but the DNS wouldn't always come back with it. Sometimes the SD card got
+corrupted and I had to reinstall everything from scratch. A few months later, I
+wrote about it on my blog:
 
 > Sometimes, I get power outages at home, and the server would stop working.
 > At reboot, it would not restore the DNS function, and we would have apparent
 > network interruption because of this. Sometime the Pi SD card would break
 > during power outage, and I would have to reinstall.
 
-And the part that really mattered:
+From everyone else's point of view, the internet was just broken. The Wi-Fi
+was connected, but nothing would load. And there was exactly one person in the
+house who knew why, and how to fix it:
 
 > Point is, I am the only on[e] who knows how to fix it at my home.
 
-When the Pi went down, the whole house lost the internet. As far as anyone
-else could tell, the Wi-Fi was broken, and I was the only person who could fix
-it. So I moved the DNS servers off the Pi and onto two rented servers
-(VPSes). A power cut at home no longer mattered: the router came back up and
-pointed at servers that had never gone down.
+I could always switch the router back to Google's DNS until I had time to
+repair the Pi, and I did. But one outage was enough to hear about it for days.
 
-That had a side effect I hadn't planned: servers on the internet can answer
-anyone. I started visiting friends and relatives, changing one setting on their
-routers, and their ads were gone too.
+So I moved the DNS off the Pi and onto two rented servers on the internet. A
+power cut at home no longer mattered. The router would come back up and point
+at servers that had never gone down.
 
-## Offering it to strangers
+It was only afterwards that I noticed what I'd done. A DNS server on the
+internet doesn't just answer my house. It can answer anyone. So I started doing
+it for other people too. I'd visit a friend or a relative, ask for their
+router's password, change one setting, and their ads were gone as well.
 
-In December 2015 and January 2016 I wrote the four-part "ADblock your Wifi"
-series: why DNS blocking, how to change your router, how it works, and
-finally the concerns. That last part has aged well, because I was already
-wrestling with the question I still think about today: **why should anyone
-trust a stranger's DNS server?**
+## Talking to strangers
+
+In December 2015 I started a WordPress blog on bancuh.com, "BANCUH – Tech &
+Rants", signing my posts as "Barista". My first real series was "ADblock your
+Wifi": four posts on why to block ads on the Wi-Fi, how to change your router,
+how DNS blocking works, and one I'm still quietly proud of, on the concerns.
+Because I was asking strangers to send every website they visited through my
+servers, and I knew exactly how that sounded:
 
 > I am just some random guy you found on the Internet, you have to trust me a
 > little (a lot actually) to use my service.
 
-I covered privacy (a DNS server *could* log everything you visit), phishing (a
-DNS server *could* send your bank's name to the wrong place, though HTTPS makes
-that hard), and what happens if the server itself gets compromised. My answer
-was mostly honesty: here's what I could do, here's what I won't do, here's how
-to check, and if you're not comfortable, don't use it.
+So I wrote down what I *could* do with their lookups, what I wouldn't do, and
+how they could check. I could log every site they visited. I could, in theory,
+send their bank's name to the wrong place. I explained why HTTPS made that
+hard, how to compare my answers with Google's, and ended with the only honest
+advice I had: if you're not comfortable, don't use it.
 
 I also made a promise that makes me smile now:
 
 > I won't block download sites, torrents, or do any kind of censorship. For the
 > moment, I am sticking to adservers only.
 
-Today, Bancuh DNS blocks gambling, torrent sites, VPNs and a lot more. How that
-happened, and why, is a story for a later post in this series.
+Bancuh DNS blocks a lot more than ads today, torrent sites included. How that
+happened is a story for later in this series.
 
-## What happened next
+## The message on Facebook
 
-In February 2017 I put the code on GitHub as
-[adblock-dns-server](https://github.com/ragibkl/adblock-dns-server). In
-September 2018, the first thank-you arrived as a GitHub issue from someone I'd
-never met. That's when I realised it wasn't just for my friends any more.
+For a while, I didn't think anyone outside my circle actually used it. At some
+point, to save money, I shut the servers down. It seemed harmless: as far as I
+knew, the only people using it were me and a few friends.
 
-`[Your take: the time you shut the servers down and someone tracked you down on Facebook to ask you to turn them back on. When was it, and what did they say?]`
+Then a message arrived on Facebook. It was from one of its users: the DNS
+had stopped working, and they'd gone looking for the person behind it. Could I
+please turn it back on?
 
-## What I took away
+I did. And I've kept it running ever since.
 
-- **Infrastructure your family depends on shouldn't live on an SD card.** A
-  Raspberry Pi is a great way to learn, and a poor way to run the house's
-  internet. The moment other people depend on something, "it works on my
-  machine" stops being enough.
-- **Moving it somewhere more reliable changed who it was for.** I moved to
-  rented servers for reliability, not to run a public service. But once it was
-  on the internet, sharing it cost nothing.
-- **Writing it down is what made it real.** Publishing that blog series, trust
-  concerns and all, is what turned a home hack into something strangers used.
-  Which is part of why I'm writing again now.
+In February 2017 I put the code on GitHub, and in September 2018 the first
+thank-you arrived as an issue from a stranger. Even now, I don't think Bancuh
+DNS has a huge number of users, and I'm fine with that. The Facebook message
+taught me something that has stuck: you don't know who depends on the thing
+you built until you take it away.
 
-Next in the series: how the list grew from four hosts files into millions of
-entries, and why the way BIND blocked them had to change.
+## Looking back
+
+Reading those 2015 posts again, what strikes me is how much of it was already
+there. The Pi taught me that anything other people depend on can't live on an
+SD card under the router. Moving to real servers taught me that once something
+is on the internet, it's for everyone, whether I planned it or not. And writing
+it all down, trust concerns included, is what turned a home hack into something
+strangers used.
+
+Eleven years later, the questions from that fourth post are still the ones I
+think about most: why should anyone trust my server, and how do I earn it?
+
+I pieced this history back together with
+[Claude Code](https://claude.com/claude-code), from git history, old GitHub
+issues, and my own blog posts rescued from the Wayback Machine. Next in the
+series: how four hosts files grew into millions of entries, and why the way
+BIND blocked them had to change.
