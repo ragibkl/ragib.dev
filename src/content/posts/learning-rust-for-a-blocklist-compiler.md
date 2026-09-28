@@ -1,8 +1,8 @@
 ---
 title: "A passing comment, and my first Rust project"
 description: "How a colleague's offhand remark got me learning Rust, and how rewriting Bancuh DNS's blocklist compiler let every server build its own list at startup."
-date: 2026-09-28
-draft: true
+date: 2026-09-28T18:00:00Z
+draft: false
 tags: [rust, dns, bancuh-dns]
 ---
 
@@ -50,7 +50,10 @@ source at once and waited for them all to finish. Downloads that used to queue
 up behind each other now happened side by side, and the total time came down
 to roughly the slowest single download.
 
-`[Your take: what was learning Rust like? Anything that surprised you, good or bad?]`
+Getting there was hard. By then I'd written Python and Django, React Native,
+and a bit of Ruby on Rails, and picking up a new language had never been much
+of a struggle. Rust really took the cake. It was, by some distance, the hardest
+language I had tried to learn.
 
 By April 2020 the Rust version had replaced the Python one entirely. I moved
 the old script into [its own repository](https://github.com/ragibkl/adblock-compiler-python),
