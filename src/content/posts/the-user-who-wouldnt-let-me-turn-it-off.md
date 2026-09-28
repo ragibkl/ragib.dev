@@ -19,9 +19,10 @@ and told BIND to point all of them at a tiny nginx server that answered every
 request with nothing at all. The whole thing ran as two Docker containers.
 
 As far as I knew, the people using it were me, my family, and a few friends
-whose routers I'd changed. Each server cost about USD 5 a month. Early in my
-career, paying for two servers that seemed to serve a handful of people didn't
-feel like a good use of money. So sometime in 2017, I turned them off.
+whose routers I'd changed. Each server cost about USD 5 a month. That doesn't
+sound like much, but I wasn't earning much at the time, and I was feeling it.
+Paying for two servers that seemed to serve only a handful of people was hard
+to justify. So sometime in 2017, I turned them off.
 
 ## Saying sorry
 
@@ -52,7 +53,9 @@ Honestly, I felt guilty. And I was surprised: someone had cared enough about
 this little side project to track me down on Facebook. I pointed him to other
 adblock DNS services that would serve him better than I could. He wanted mine.
 
-So I brought it back, on two DigitalOcean servers in Singapore again. Those
+By then I'd moved to a better-paying job, and USD 10 a month no longer hurt.
+Between that and his persistence, I brought it back, on two DigitalOcean
+servers in Singapore again. Those
 two servers are still running today, as `sg-dns1` and `sg-dns2`.
 
 ## A persistent user
