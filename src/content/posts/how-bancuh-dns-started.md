@@ -113,20 +113,22 @@ happened is a story for later in this series.
 
 ## The message on Facebook
 
-For a while, I didn't think anyone outside my circle actually used it. At some
-point, to save money, I shut the servers down. It seemed harmless: as far as I
-knew, the only people using it were me and a few friends.
+In February 2017 I put the code on GitHub. That same year, I shut the servers
+down. Each one cost about USD 5 a month, and as far as I knew, the only people
+using them were me and a few friends. When I wrote about it afterwards, I
+didn't dress it up:
 
-Then a message arrived on Facebook. It was from one of its users: the DNS
-had stopped working, and they'd gone looking for the person behind it. Could I
+> If you've been using my DNS servers until recently, you'll know that I took
+> down my servers. It was no longer financially viable for me to keep them
+> running. Yeah, if you were using, I kinda screwed you over. Sorry about that.
+
+Then a message arrived on Facebook. It was from a user I'd never met, who had
+gone looking for the person behind the DNS that had stopped working. Could I
 please turn it back on?
 
-I did. And I've kept it running ever since.
-
-In February 2017 I put the code on GitHub, and in September 2018 the first
-thank-you arrived as an issue from a stranger. Even now, I don't think Bancuh
-DNS has a huge number of users, and I'm fine with that. The Facebook message
-taught me something that has stuck: you don't know who depends on the thing
+I did, and it has been running ever since. That message, and the user behind
+it, is the [next part of this story](/writing/the-user-who-wouldnt-let-me-turn-it-off/).
+It taught me something that has stuck: you don't know who depends on the thing
 you built until you take it away.
 
 ## Looking back
@@ -144,5 +146,4 @@ think about most: why should anyone trust my server, and how do I earn it?
 I pieced this history back together with
 [Claude Code](https://claude.com/claude-code), from git history, old GitHub
 issues, and my own blog posts rescued from the Wayback Machine. Next in the
-series: how four hosts files grew into millions of entries, and why the way
-BIND blocked them had to change.
+series: [the user who wouldn't let me turn it off](/writing/the-user-who-wouldnt-let-me-turn-it-off/).
