@@ -1,0 +1,12 @@
+I have successfully deployed a new WordPress site: “BANCUH”
+This would be the first actual post that I am posting to this site. The first 2 don’t count, and here’s why:
+Naturally, when creating a new WordPress site, the first post is a ‘Hello World’ post, automatically created by the WordPress engine. This demonstrates to the already-too-tired site admin that ‘Finally’, the site is ALIVE. Hours spent on reading various documentations and wrestling with the server, and the site is ALIVE. And yes, as what others must have felt, I am delighted to see that bancuh.com, is alive and kicking.
+The SITE is ALIVE. I deserve a coffee break!!!
+After that, I noticed that there are a lot of things that broke down in the background, my other sites are not working as expected, and when I change certain settings, such as PrettyPermalinks, shit stopped working. A few good hours more were spent (or wasted). Maybe I’ll tell you about it someday.
+Once I got this site configured, and make it play nice with other sites I’m hosting, the second post ‘Test Post’ was created just so that I could get comfortable with the interface, to see if I can actually post stuffs, and if PrettyPermalinks are working as expected.
+At the time of writing this post, something managed to break again on server side!!!
+The audacity!!! Actually, it was my fault. A random, stupidly placed html file is all it takes to shutdown my site. Luckily nothing actually broke, no files were overwritten. Just one silly html file in the wrong place, delete that and things work again as expected.
+This post counts as an actual post because my rantings here are actual and legit. I’m exhausted, and it helps to clear my mind. So, what do we make of this site? I do not fully know yet. At first, my news feed pops-up about a new release of WordPress, and I decided “I might as well give it a spin”. So far, it spins to my liking, but unclear towards which direction. We’ll see.
+We’ll see…
+That’s it for today, till next time.
+I’m tired. Time to catch up on some snooze.
