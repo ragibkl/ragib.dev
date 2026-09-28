@@ -1,0 +1,76 @@
+# Projects, shown by `order`. `featured` ones also appear on the
+# home page.
+
+- id: bancuh-dns
+  order: 1
+  name: Bancuh DNS
+  summary: A free public adblock DNS service.
+  description: >-
+    Blocks ads, trackers, malware and adult content for whole networks, with
+    nothing to install. Seven servers in four locations, serving plain DNS,
+    DNS-over-TLS and DNS-over-HTTPS. It started as a personal ad-blocking DNS
+    server and grew into a filtering server written in Rust, a dnsdist front
+    end with automatic certificates, and a blocklist tuned with its users.
+  since: 2017
+  featured: true
+  tech: [Rust, dnsdist, Unbound, Docker]
+  links:
+    - label: bancuh.com
+      href: https://bancuh.com
+    - label: GitHub
+      href: https://github.com/ragibkl/adblock-dns-server
+
+- id: simplesolat
+  order: 2
+  name: simplesolat
+  summary: A Muslim prayer times app with home screen widgets.
+  description: >-
+    All seven daily prayer times, a Qibla compass and home screen widgets,
+    working offline. Uses official timetables for nine countries, gathered
+    from each country's religious authority, and calculates times locally
+    everywhere else. New countries are added through a data repository
+    without an app update.
+  since: 2025
+  featured: true
+  tech: [React Native, Expo, TypeScript, Rust, Python]
+  links:
+    - label: Google Play
+      href: https://play.google.com/store/apps/details?id=com.simplesolat.app
+    - label: GitHub
+      href: https://github.com/ragibkl/simplesolat
+
+- id: gibtalk
+  order: 3
+  name: GibTalk
+  summary: A free AAC app for communicating without speaking.
+  description: >-
+    An Augmentative and Alternative Communication app, inspired by JABtalk:
+    tap words and pictures to speak them aloud. Word sets can be edited,
+    backed up and loaded from ready-made collections. Free, with no ads.
+  since: 2023
+  featured: true
+  tech: [React Native, Expo, TypeScript, Rust]
+  links:
+    - label: Website
+      href: https://gibtalk.ragib.dev
+    - label: Google Play
+      href: https://play.google.com/store/apps/details?id=com.ragibkl.GibTalk
+    - label: GitHub
+      href: https://github.com/ragibkl/GibTalk
+
+- id: homelab
+  order: 4
+  name: Homelab
+  summary: The small cluster at home that runs most of the above.
+  description: >-
+    A Proxmox host running small Alpine Linux VMs for the router and a k3s
+    cluster managed with Flux, plus a VM for development workspaces. Public
+    traffic arrives through an frp tunnel from a small VPS, and wildcard certificates come from a
+    self-hosted acme-dns. This site runs on it.
+  since: 2025
+  tech: [Proxmox, Alpine Linux, k3s, Flux, frp]
+  links:
+    - label: VM scripts
+      href: https://github.com/ragibkl/homelab-vm
+    - label: Tunnel ingress
+      href: https://github.com/ragibkl/frp-tunnel-ingress

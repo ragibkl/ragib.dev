@@ -1,0 +1,19 @@
+---
+import Base from "../../layouts/Base.astro";
+import PostList from "../../components/PostList.astro";
+import { getPosts } from "../../lib/content";
+
+const posts = await getPosts();
+---
+
+<Base
+  title="Writing"
+  description="Notes on things I've built, and what they taught me."
+>
+  <h1>Writing</h1>
+  <p class="muted">
+    Notes on things I've built outside work, and what they taught me. Subscribe
+    with <a href="/rss.xml">RSS</a>.
+  </p>
+  <PostList posts={posts} />
+</Base>

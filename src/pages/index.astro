@@ -1,0 +1,88 @@
+---
+import { Image } from "astro:assets";
+
+import Base from "../layouts/Base.astro";
+import PostList from "../components/PostList.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { SITE, getPosts, getProjects } from "../lib/content";
+import avatar from "../assets/avatar.jpg";
+
+const posts = (await getPosts()).slice(0, 5);
+const featured = (await getProjects()).filter((p) => p.data.featured);
+---
+
+<Base>
+  <section class="intro">
+    <Image
+      src={avatar}
+      alt="Ragib Badaruddin"
+      width={96}
+      height={96}
+      densities={[1, 2]}
+      class="avatar"
+      loading="eager"
+    />
+    <div>
+      <h1>{SITE.name}</h1>
+      <p class="tagline">{SITE.tagline}</p>
+      <p class="links">
+        <a href={SITE.github} rel="me">
+          GitHub
+        </a>
+        <a href={SITE.linkedin} rel="me">
+          LinkedIn
+        </a>
+        <a href="/rss.xml">RSS</a>
+      </p>
+    </div>
+  </section>
+
+  <h2>Writing</h2>
+  <PostList posts={posts} />
+  {posts.length > 0 && (
+    <p>
+      <a href="/writing/">All writing →</a>
+    </p>
+  )}
+
+  <h2>Projects</h2>
+  {featured.map((project) => (
+    <ProjectCard project={project} />
+  ))}
+  <p>
+    <a href="/projects/">All projects →</a>
+  </p>
+</Base>
+
+<style>
+  .intro {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-block: 2rem 1rem;
+  }
+  .avatar {
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  h1 {
+    margin: 0;
+    font-size: 1.75rem;
+  }
+  .tagline {
+    margin: 0.25rem 0 0.5rem;
+    color: var(--muted);
+  }
+  .links {
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    font-size: 0.95rem;
+  }
+  @media (max-width: 30rem) {
+    .intro {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

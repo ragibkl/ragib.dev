@@ -1,0 +1,77 @@
+---
+import "../styles/global.css";
+import { SITE } from "../lib/content";
+
+interface Props {
+  title?: string;
+  description?: string;
+  type?: "website" | "article";
+}
+
+const { title, description = SITE.tagline, type = "website" } = Astro.props;
+const fullTitle = title ? `${title} · ${SITE.name}` : SITE.name;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const path = Astro.url.pathname;
+
+const nav = [
+  { href: "/writing/", label: "Writing" },
+  { href: "/projects/", label: "Projects" },
+  { href: "/about/", label: "About" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={SITE.name}
+      href="/rss.xml"
+    />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="color-scheme" content="light dark" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="site-name" href="/">
+        {SITE.name}
+      </a>
+      <nav aria-label="Main">
+        {nav.map((item) => (
+          <a
+            href={item.href}
+            aria-current={path.startsWith(item.href) ? "page" : undefined}
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <a href={SITE.github} rel="me">
+        GitHub
+      </a>
+      <a href={SITE.linkedin} rel="me">
+        LinkedIn
+      </a>
+      <a href="/rss.xml">RSS</a>
+      <a href={SITE.source}>Source</a>
+    </footer>
+  </body>
+</html>

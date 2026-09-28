@@ -1,0 +1,33 @@
+---
+import Base from "../layouts/Base.astro";
+import { SITE } from "../lib/content";
+---
+
+<Base title="About" description="About Ragib Badaruddin and this site.">
+  <h1>About</h1>
+  <p>
+    I'm Ragib, a software engineer in Malaysia. Outside work, I build and run
+    small things that other people use: a{" "}
+    <a href="/projects/#bancuh-dns">public adblock DNS service</a>, a{" "}
+    <a href="/projects/#simplesolat">prayer times app</a>, an
+    <a href="/projects/#gibtalk">app for communicating without speaking</a>, and
+    the <a href="/projects/#homelab">homelab</a> they mostly run on.
+  </p>
+  <p>
+    Looking back, that's a lot of things learned the slow way, and most of it
+    only lives in commit messages and old GitHub issues. This site is where I
+    write it down: what I built, what went wrong, and what I'd do differently.
+    Not advice, just notes.
+  </p>
+  <p>
+    For my work history, see <a href={SITE.linkedin}>LinkedIn</a>. For code, see{" "}
+    <a href={SITE.github}>GitHub</a>.
+  </p>
+
+  <h2>This site</h2>
+  <p>
+    Built with <a href="https://astro.build">Astro</a> and served as static
+    files from the homelab, deployed with Flux. No analytics, no cookies. The{" "}
+    <a href={SITE.source}>source is on GitHub</a>.
+  </p>
+</Base>

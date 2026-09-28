@@ -1,0 +1,90 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+  /** Show the full description, tech and links rather than just the summary. */
+  full?: boolean;
+}
+
+const { project, full = false } = Astro.props;
+const { name, summary, description, since, tech, links } = project.data;
+---
+
+<article class="project" id={project.id}>
+  <header>
+    <h3>{full ? name : <a href={`/projects/#${project.id}`}>{name}</a>}</h3>
+    <span class="since">since {since}</span>
+  </header>
+  <p>{full ? description : summary}</p>
+  {full && (
+    <>
+      <ul class="tech" aria-label="Built with">
+        {tech.map((t) => (
+          <li>{t}</li>
+        ))}
+      </ul>
+      <p class="links">
+        {links.map((l) => (
+          <a href={l.href}>{l.label}</a>
+        ))}
+      </p>
+    </>
+  )}
+</article>
+
+<style>
+  .project {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-block: 1rem;
+  }
+  header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  h3 {
+    margin: 0;
+  }
+  h3 a {
+    color: var(--text);
+    text-decoration: none;
+  }
+  h3 a:hover {
+    color: var(--accent);
+  }
+  .since {
+    color: var(--muted);
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+  p {
+    margin-block: 0.5rem 0;
+  }
+  .tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0 0;
+  }
+  .tech li {
+    font-size: 0.8rem;
+    background: var(--accent-soft);
+    color: var(--text);
+    padding: 0.1em 0.6em;
+    border-radius: 999px;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+  }
+</style>
