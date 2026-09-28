@@ -1,0 +1,59 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { formatDate } from "../lib/content";
+
+interface Props {
+  posts: CollectionEntry<"posts">[];
+}
+
+const { posts } = Astro.props;
+---
+
+{posts.length === 0 ? (
+  <p class="muted">Nothing here yet. The first post is on its way.</p>
+) : (
+  <ul class="post-list">
+    {posts.map((post) => (
+      <li>
+        <a href={`/writing/${post.id}/`}>{post.data.title}</a>
+        {post.data.draft && <span class="draft">draft</span>}
+        <time datetime={post.data.date.toISOString()}>
+          {formatDate(post.data.date)}
+        </time>
+      </li>
+    ))}
+  </ul>
+)}
+
+<style>
+  .post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 0.75rem;
+    padding-block: 0.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+  li a {
+    flex: 1 1 18rem;
+  }
+  time {
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .draft {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 0.1em 0.5em;
+    border-radius: 4px;
+  }
+</style>

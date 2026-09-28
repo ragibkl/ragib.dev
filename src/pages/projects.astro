@@ -1,0 +1,18 @@
+---
+import Base from "../layouts/Base.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { getProjects } from "../lib/content";
+
+const projects = await getProjects();
+---
+
+<Base title="Projects" description="Things I've built and run outside work.">
+  <h1>Projects</h1>
+  <p class="muted">
+    Things I've built and still run outside work. The source for each is on
+    GitHub.
+  </p>
+  {projects.map((project) => (
+    <ProjectCard project={project} full />
+  ))}
+</Base>
