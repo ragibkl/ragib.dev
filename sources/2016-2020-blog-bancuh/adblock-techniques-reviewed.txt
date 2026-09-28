@@ -1,0 +1,56 @@
+URL: https://blog.bancuh.com/adblock-techniques-reviewed/
+Snapshot: 20191213061105
+Posted: 2016-11-27
+
+Here is a comparison of various Adblocking technique that I’ve tried, and why I think that we need Wifi Adblock.
+Adblock extension for Chrome and Firefox
+If you’re smart enough to install Chrome or Firefox, you could also install extensions such as adblock, adblock plus, adblock edge to help block most adverts. Most ads should just disappear after that. Most people already know how to do this. Even if you didn’t actually know that you can do this, if you actually bother to stop seeing ads, you could google for the answer, and most people would arrive at the same conclusion. Or, if you have a smart friend, he/she could install this for you.
+Adblock extension for Chrome / Firefox work well, but are limited to PCs/Laptops only.
+However, adblock extensions now only works on PC/Laptop. There is no version for your other devices yet. Additionally, suppose you have several PCs, a couple of laptops at home, now it might become a chore to install/maintain adblock on each PC and Laptop. What if it’s your parents’ laptop? Your SO’s? Now, you have to force them to use Chrome or Firefox, just so you could install adblock. Then, they’ll forget that you told them not to use IE, and you are back at square 1; they still complain about all the ads they are seeing again, and won’t let you take away their favorite browser IE.
+Pros:
+Easy to install within the web browser. Minimal setup.
+Cons:
+Only works within the browser. Apps that comes with ads will still show them unhindered.
+Now only works on PC/Laptop, and a select of web browsers.
+Needs to be setup on each PC/Laptop.
+AdAway for Android
+Back to your other devices. Android phones and tablets can use a special App called AdAway, that blocks ads from entering the phone. It works by appending the Android hosts file with a long blacklist of known domain names of ad servers. Because of this, whenever any application needs the address for any of the known ad server domain name, the phone returns a phony answer, hence the ads would fail to load. It works on all apps and browsers on the phone that tries to load advertisements.
+Adaway also helps you handle blacklist updates automatically.
+However, it requires the phone to be rooted. Rooting is fine and dandy for people of the right skill and enough will to do it, but not all devices can be rooted easily. Some rooting methods risk data loss or even bricking the phone. All data will be lost, cat pictures and everything. Doesn’t sound so pretty huh?
+AdAway requires the android device to be rooted, which is another pain in the ass
+What if it’s an iPhone? iPad? Not possible. I don’t know of any easy to use app to edit the hosts file on an iDevice with some adserver blacklist. I’m not sure if a similar program can be found for Windows, Linux and Mac.
+Pros:
+Using hosts file blocks ads on all traffic, be it browser or in-App adverts
+Easy updates
+Cons:
+Only for Android.
+Device needs root access, which might be difficult on some and impossible on others.
+Needs to be setup on each Android device.
+Hosts file editing
+I haven’t personally done this, but here is how it should work. If we can get our hands on a list of adservers to blacklist, we can compile our own list and update the hosts file on our devices manually. It’s similar to Adaway on Android, but manual. If your Android has root, you just use Adaway. This is useful if you are using Windows, Linux, or Mac.
+It might not be easy to do on iDevices, and you might have to jailbreak them. They are locked down so hard, even if you could do it, you stand a higher risk bricking your iDevice, and voiding you warranty.
+Pros:
+Using hosts file blocks ads on all traffic, be it browser of in-App adverts
+Cons:
+Manual process.
+Risky to do, and should only be done by technical people who knows how to edit a hosts file
+Needs to be setup on each device.
+Adblock your wifi using DNS adblock
+And so, we arrive at the center of this long-winded discussion. If all your devices connect to the internet via a common Wifi router, would it not be smarter if you could configure your router, such that no ads could enter your entire Wifi network? Imagine what would happen, if you could block ads from entering your entire home Wifi network. It no longer matters what device or platform you use, whether you are using a Windows PC, Mac Laptop, Android device, Apple device, and it no longer matters what browser or apps you want to use, whether IE/Chrome/Firefox/Safari, games on Android, you could block Ads across all those.
+All you have to do is configure your one Wifi router
+All you have to do is configure your one Wifi router. Just one place to config, and it works on all devices. No more hassle of dealing with each device. You have guests coming over? Let them in your network, and you have just stopped ads for them as well.
+In short, Adblocking your Wifi network takes the least effort! A single configuration effort is all you need. However the impact extends across each and every device, browsers and apps that you might want to run.
+However, this does need some additional item. You need a DNS server that resolves domain-name as usual, but also additionally blocks ads domains. You need a DNS adblock to use. You can either set up your own DNS adblock, or use any available DNS adblock server you can find. You also need to be able to trust that DNS adblock server. Next, wire the DNS adblock server to your router. I will teach you how to do both.
+Pros:
+Device coverage. Set up once on the WiFi router, and it works on all devices in the network.
+Reusable. A single DNS adblock server can be shared between thousands of Wifi routers.
+Easy to apply. Wiring a WiFi router to a DNS adblock is very simple. Set it once and leave it be.
+Easy to replicate. Once you managed to wire up your own WiFi router, you can easily replicate on other WiFi routers easily.
+Cons:
+Limited coverage. It only works on the devices while they are on the network. If they leave the network and use a different network, adblock coverage is lost.
+Difficult to host DNS adblock server. Setting up a DNS adblock server is not easy, and should be left to adept sysadmins only.
+Single point of failure. A failed DNS adblock server may disrupt Internet access on all connected WiFi routers. It is easy to just fallback to Google’s DNS server, but it takes a manual step.
+Trust issue. Wiring your router to a public adblock DNS requires trust. You can also set up your own, which helps alleviate the issue.
+Summary
+This list is by no means exhaustive, they’re just the ones I now about. I use a subset combination of the above techniques daily, because they cover different areas.
+ Posted in: Uncategorized

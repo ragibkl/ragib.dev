@@ -1,0 +1,23 @@
+URL: https://blog.bancuh.com/adblock-dns/adblock-dns-quickstart/
+Snapshot: 20180819020141
+Posted: ?
+
+DNS Servers ip addresses
+dns1.bancuh.com
+ipv4: 139.59.219.245
+ipv6: 2400:6180:0:d0::f7:1001
+dns2.bancuh.com
+ipv4: 139.59.218.207
+ipv6: 2400:6180:0:d0::f5:7001
+Option 1: Router Setup
+Open your home router admin page
+Set your WAN dns servers to the ip addresses above.
+Choose either ipv4 or ipv6 addresses, depending on your network type.
+Set your LAN-DHCP dns server to your home router ip address
+Reboot every device on the network
+Enjoy ad-free browsing experience, on every device on the network
+Option 2: Laptop/PC
+Open your laptop/PC network settings. This will differ between each OS
+Set your dns servers to the ip addresses above
+Restart your laptop/PC
+Enjoy ad-free browsing experience, on every device on the network

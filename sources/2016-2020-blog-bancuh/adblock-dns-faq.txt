@@ -1,0 +1,47 @@
+URL: https://blog.bancuh.com/adblock-dns/adblock-dns-faq/
+Snapshot: 20180819010303
+Posted: ?
+
+How much does this cost?
+It’s free. I never intended to charge people for this anyway.
+I might set up some ways for you to be able to donate to me to keep this running. I am open to suggestions.
+What’s the IP address of your DNS servers?
+dns1.bancuh.com
+ipv4: 139.59.219.245
+ipv6: 2400:6180:0:d0::f7:1001
+dns2.bancuh.com
+ipv4: 139.59.218.207
+ipv6: 2400:6180:0:d0::f5:7001
+If you don’t want to memorize the addresses, you can run the following commands to quickly find out.
+nslookup dns1.bancuh.com
+nslookup dns2.bancuh.com
+How do I set it up?
+Follow the instructions on the Quick Start page to get started.
+Who should use this service?
+If you don’t like to see ads while browsing, use this. Currently, we also filter out some known adult content sites, so if you apply this to your home router, we can make the internet a little safer for your kids.
+What type of content is blocked?
+We try to block the following:
+Known ad servers
+Known malware sites
+Known adult content sites
+How does DNS adblocking work?
+Whenever your browser or apps need to load content from the Internet, your device will first have to find out the IP address of the server with that content. It will first look in your system’s hosts file. Next, it will try your DNS servers. DNS servers then provides the IP address of the domain name that serves the content. Having the correct IP address of domain names is crucial for loading Internet content.
+An adblock DNS server however, does something extra. If the domain name is known for hosting ads, we perform a ‘white lie’, and redirect to a null server. Not having the correct IP address for adservers means that ads will fail to load.
+If you use any available adblock DNS server on your home router, or your laptop, ads won’t load.
+Why not use a browser extension instead?
+Ideally, you should use browser adblock extensions whenever they are available. Also use adblock dns servers to cover other use cases.
+The most common way to block ads, is to install a browser extension that block ads on the browser. If you use Firefox or Chrome on a laptop/PC, then there are several extensions to choose from. It is also quite effective.
+However not all browsers and devices will have available extensions. Some mobile apps nowadays also have ads placeholder in-app, and extensions will not apply here.
+Extensions also only apply to a single browser where it’s installed. You probably don’t want to install adblock extensions on every single device on your home network. In comparison, adblock dns will apply to your entire network.
+Why not edit the hosts file instead?
+Actually, using hosts file would be slightly faster and more reliable than using our adblock DNS servers. When possible, you should use hosts file instead. Again, you can still use our adblock DNS servers to cover for other use cases. Here’s why.
+Host files work offline, your device will immediately know which ad domains to block, without relying on external providers. You can then stick to Google’s DNS or OpenDNS servers for regular content, which should be more reliable and faster than my own servers.
+There are also tools that can help you configure this. AdAway works on rooted Android devices. Some projects (https://github.com/StevenBlack/hosts) provide hosts files that you can use straight away.
+But again, it does not work for all devices. I’m not sure if it is possible on IOS, and doing this on Android requires the device to be rooted. And you have to configure each single device on your network.
+It is also possible that you are also using your hosts file for other purposes, and you don’t want to pollute it with thousands of lines of ad domains. Also, a misconfigured host file will disrupt your Internet.
+Use adblock DNS when you don’t want to deal with hosts file. It’s easier.
+Is it possible to host adblock DNS servers myself?
+Certainly. There are several guides on the Internet on how to set this up. This has been done before numerous times.
+I recommend you get started with my project on github at https://github.com/ragibkl/adblock-dns-server. Using a few commands, you can get up and running within minutes.
+It does not seem to work. How do I fix this?
+Head over to Adblock DNS: Support page for more details.

@@ -1,0 +1,20 @@
+URL: https://blog.bancuh.com/adblocking-dns/
+Snapshot: 20201126122116
+Posted: 2016-11-10
+
+The internet is riddled with Ads. In trying to get rid of them, I explore various options an techniques to apply adblocking. Here is where I put my notes and journals on adblocking.
+The Internet is an awesome place…
+The Internet is awesome. Here, is where you play online games while your losing opponent tell you to get a life, watch funny cat videos, people FAILS and accident videos, and tell the world about your ‘opinion’. Here, we share funny pictures, seek attention, troll people and judge each other. In general, the internet is a really fun place.
+In general, the internet is a really fun place… except when it’s not.
+Now with Ads
+However, it is not as much fun if every single fucking page you want to visit has to shower you with ads. Every fucking page.
+In general, I always feel that ads are bad. They are bad for the user and bad for the website owner.
+Ads are distraction. They distract user from the content that the user wants to see.
+Ads are disruptive. They annoy users and stifle conversation between the user and the web.
+Ads have very small returns. PLUS, websites that rely on showering users with tons of ads will soon chase users away, and aren’t worth visiting.
+This also serves as a motivation for using
+Adblock Your Wifi
+Here is a collection of my articles on how wifi adblock works, and how to set it up. While I do have a working solution in place, it still is a work in progress, and will update this as I go.
+Adblock techniques reviewed. I compare currently known adblock techniques, and contrast them against Wifi Adblock. (Link)
+How to adblock your WiFi. Here is a walkthrough on how to apply adblocking to your own router. (Link)
+ Posted in: Projects

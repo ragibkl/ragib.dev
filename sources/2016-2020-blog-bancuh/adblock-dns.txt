@@ -1,0 +1,16 @@
+URL: https://blog.bancuh.com/adblock-dns/
+Snapshot: 20180818231014
+Posted: ?
+
+Safe and Ad-free browsing experience
+Browse the web, without any intrusive ads or tracking services. Known malware sites are also blocked to further protect your experience.
+Family-Safe browsing
+We also soft-block sites with adult contents. Keep your family browsing experience safe.
+Zero Cost & Completely FREE
+This service will remain free for as long as possible.
+Minimal Setup
+Zero installation. Point your network to our DNS servers, and you are done. Visit the Quick Start link to set up Adblock DNS on your network.
+Fast performance & low impact
+Blocking ads removes the unwanted Internet traffic from your network. Blocking ads also reduces the processing load on your computer. With Adblocking done at the DNS level, there is no performance impact on your device. No browser extensions or plugins need to run on your computer.
+Always updated
+Are you tired of constantly having to update your hosts file, every time a new adserver pops up? We keep our servers updated, so you can keep browsing worry-free.

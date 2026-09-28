@@ -1,0 +1,40 @@
+URL: https://blog.bancuh.com/shit-happens-updates-and-such/
+Snapshot: 20180819003020
+Posted: 2017-06-17
+
+Well, I’m going to rant for a while. Here’s a list of random updates / rants from me.
+Shit happens
+About a couple of weeks ago, I was riding my motorcycle to work in the morning. Along the way, I suddenly felt like ‘something’ fell from the sky and hit the visor on my helmet, and got stuck. I did not see what it was because I had my visor folding upwards.
+Klank!
+So, feeling curious, I examined it with my left hand to check what it was. It was bird shit. My left hand now covered in fresh poop, and my visor smeared with it, I used only my right hand to finish the ride to office, so as to not smear my bike handle with poop.
+Shit literally just happened.
+It wasn’t fun, but I’m glad that my bike is semi-auto. No clutch to operate, so my left hand was free. So I got to the office safe and sound, and cleaned stuff up before working. Shit happens.
+Breaking updates on XOrg
+If you have been following my Fedora / 2-in-1 laptop experiment, you know that I currently run Gnome desktop in XOrg instead of Wayland. XOrg allows my touchscreen and stylus pen inputs to work correctly. However, after recent software updates, XOrg would freeze a lot and the Gnome desktop would just crash, making it unusable.
+My solution is to just stick with Wayland for now. As a result, some of the desktop elements do not respond to to touches.
+Window minimize/maximize/close buttons don’t respond to touch. Stylus works though. This does not happen in Gnome apps (gtk 3 apps?). Firefox is affected, which is a pain.
+Some Gnome Shell Extensions buttons such as Caffeine, On Screen Keyboard Button, and TopIcons Plus don’t respond to touchscreen. It is a bit annoying to use in tablet mode because I can’t easily prevent sleep, or summon the keyboard, or open my taskbar apps (Nextcloud, Slack).
+Apps like Gimp, KolourPaint, Firefox (XWayland) don’t respond to the stylus anymore. No more fancy drawing sessions.
+As a replacement of On Screen Keyboard Button, I installed Slide For Keyboard, which worked quite well under Wayland (not so well on XOrg). However, it takes some practice to do the slide gesture to summon the keyboard. Sometimes my slide gesture doesn’t register, but it works good enough for now so I’ll stick with it.
+I don’t blame the Gnome or Fedora or any devs for this minor setback. They have good reasons to focus more on Wayland. I believe Wayland is the way forward for Gnome desktops, and Linux Desktop/Tablets moving forward, and we should then drop XOrg.
+This is also a good excuse for me to try Wayland more extensively.
+I did also notice some improved experience when switching to Wayland.
+Wayland is AWESOME
+Gnome desktop work much more smoother. No glitches, or tearing. It is very smooth. I also have not seen any screen lags for a while now.
+In Wayland, Gnome display settings report more options for screen resolutions for my hiDPI laptop screen. This is good, because I can choose a lower resolution, to have it work well with my non-hiDPI external monitor.
+The onscreen keyboard also seems to work much better. On XOrg, when typing on the address bar of Firefox, sometimes the cursor would un-focus from the address bar, so typing an address would get interrupted. No longer happening on Wayland. Awesome!
+A note on battery life
+I also noticed that my cpu usage is much less now. I hope that it translates to better battery life or lower temps. Let’s do a quick test while typing this article. I am unplugging the laptop charger now.
+With several tabs open on Firefox, a tab is playing a youtube video in background, sending audio to a Bluetooth headset.  at 100% screen brightness, Power Statistics says I have 4 hours left.
+I reduced screen to 5 % brightness (still pretty legible), 4:50 hours.
+I turned off Bluetooth, killed the Youtube tab, and just typing this article. 6:30 hours. Which is impressive I think. Power usage averages to (5 Watts). Previously on XOrg, this would be about 5:00 hours-ish.
+I left the laptop to lock-screen and turn the display off. 9:30 to empty. About 3 Watts.
+So, I definitely think that Gnome, Wayland and Fedora devs are doing a lot of good work.
+There are some spikes in cpu usage when the Gnome Shell is doing some animations, but I’m not doing that all of the time. Mostly I just use the laptop for work (obviously).
+Full desktop experience
+I also tried another Dash To Panel extension, and switched off Dash To Dock. This gives a very simple more desktop-oriented experience. Think of Windows 7 taskbar. Since I mostly work on a worktable with a keyboard and mouse anyway, this works really well with my daily productivity cycle. Big thumbs up to Dash To Panel devs. I still like Dash To Dock just as much though.
+I believe, if you are on Fedora, on a desktop or laptop (keyboard and mouse), Wayland will give the best experience. Performance wise, it is better than XOrg.
+If you are using 2-in-1 like me, you should still consider Wayland. However, you have to sacrifice touch and stylus for now. Touch still works well in apps, just not in some places. XWayland, non-GTK3 (I think?) apps don’t respond to touches and stylus, as well as some desktop elements. I’m sure that these will be sorted out in the future.
+BTW, Fedora 26 is in beta right now, I can’t wait to see how well it works. Maybe some of these would have been fixed? Anyway, future of Linux desktop looks bright.
+End of my rant for now. Cheers!
+ Posted in: Rants
