@@ -1,8 +1,8 @@
 ---
 title: "The user who wouldn't let me turn it off"
 description: "In 2017 I shut down my free adblock DNS to save money. A user in Vietnam tracked me down on Facebook, and over the next few years, his requests shaped much of what Bancuh DNS became."
-date: 2026-09-29
-draft: true
+date: 2026-09-28T12:00:00Z
+draft: false
 tags: [dns, bancuh-dns, self-hosting]
 ---
 
