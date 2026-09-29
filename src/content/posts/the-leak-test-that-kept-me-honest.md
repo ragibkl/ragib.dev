@@ -97,9 +97,14 @@ locally. Two days after that, every server was resolving for itself again
 ([#200](https://github.com/ragibkl/adblock-dns-server/issues/200)).
 
 Bundling them meant two programs in one container, and I'd been burned by that
-before. In 2022, a shell script ran BIND next to the updater, and when BIND was
-killed, the script didn't notice: the container kept running with no DNS
-server inside it. This time, I made my Rust program the one in charge. It
+before. Back when BIND did the blocking, a small shell script started BIND and
+the list updater side by side, then waited for *both* of them to finish. So
+when BIND was killed in 2022, the updater carried on, and the container kept
+running with no DNS server inside it. I patched it with a one-line change,
+telling the script to exit as soon as *either* program stopped, so Docker
+would restart everything.
+
+This time, I made my Rust program the one in charge. It
 starts BIND itself, as a child process. When Docker asks the container to stop,
 my program shuts BIND down with it. And if BIND ever dies on its own, my program
 notices, shuts itself down too, and lets Docker restart the whole container
