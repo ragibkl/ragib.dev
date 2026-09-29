@@ -2,7 +2,7 @@
 title: "Most of my outages were my own updates"
 description: "Between 2020 and 2023, almost every Bancuh DNS outage came from the code that updated the servers, not the code that served DNS. A k3s experiment, self-updating servers, the OOM killer, a growing list on a small budget, and a certificate bug my own habits were hiding."
 date: 2026-09-29
-draft: true
+draft: false
 tags: [dns, bancuh-dns, operations, bind]
 ---
 
