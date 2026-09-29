@@ -103,7 +103,7 @@ It could only pass lookups on to another DNS server, so for a few months,
 Bancuh DNS went back to forwarding queries to public resolvers.
 
 Getting that back properly took two more attempts, and one of them was BIND
-again. That's the next part of this story.
+again. [That's the next part of this story](/writing/the-leak-test-that-kept-me-honest/).
 
 ## The numbers
 
