@@ -2,7 +2,7 @@
 title: "Replacing BIND with my own DNS server"
 description: "By the end of 2023, BIND was using 2.8 GB of memory to block ads on a 4 GB server. So I wrote a small DNS server in Rust that does the same job in about 100 MB."
 date: 2026-09-29T12:00:00Z
-draft: true
+draft: false
 tags: [rust, dns, bancuh-dns]
 ---
 
