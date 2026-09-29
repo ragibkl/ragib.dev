@@ -97,14 +97,18 @@ first couple of days, and prayer notifications a few days after that.
 I didn't start from nothing. A developer named Fareez Iqmal had built a
 similar app, and I first tried using the prayer times API he'd made. His
 approach to zones inspired mine, too. Each country's official timetable is
-published per *zone*, a group of districts that share the same times. His work
-used GeoJSON, a standard format for shapes on a map, to describe where each
-zone's boundaries lie, and that showed me a clean way to find the right zone
-for any location.
+published per *zone*, a group of districts that share the same times. His
+backend used GeoJSON, a standard format for shapes on a map, to describe where
+each zone's boundaries lie, and to find which zone a location falls in.
 
-In simplesolat, the zone is worked out **on your phone**, by checking your
-location against those GeoJSON boundaries, which the app downloads once and
-keeps. Your location never
+I thought about a simpler approach first: pick whichever zone's centre is
+closest to you. But zones aren't circles, and near a border, the closest centre
+can easily be the wrong zone. Real boundaries were better.
+
+The difference in simplesolat is *where* that happens. Instead of sending your
+location to a server to look up, the app does it **on your phone**. It
+downloads the GeoJSON boundaries once, keeps them, and checks your location
+against them locally. Your location never
 leaves the device. All it ever asks a server for is the timetable for a
 zone.
 
