@@ -53,8 +53,8 @@ reply went on to say that USM had taken the app over, and would update it
 soon.
 
 I was devastated. For more than three months after their death, their app had
-carried on quietly reminding hundreds of thousands of people when to pray,
-right up until the day the data ran out.
+carried on quietly reminding its users when to pray, right up until the day
+the data ran out.
 
 I wrote back to send my condolences to the developer's family, and to thank USM
 for keeping the app going. I'm a backend developer, so I offered to help if
