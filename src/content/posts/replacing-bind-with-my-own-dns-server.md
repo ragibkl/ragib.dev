@@ -25,7 +25,10 @@ list was short
 ([#191](https://github.com/ragibkl/adblock-dns-server/issues/191)):
 
 - block every domain on the blocklist,
+- except the ones on the allowlist,
 - rewrite a handful of domains to others, for SafeSearch,
+- support wildcard entries like `*.example.com`, which block a domain and
+  everything under it,
 - and look up everything else.
 
 That's it. The hard part isn't DNS itself. It's the blocklist: millions of
@@ -46,20 +49,31 @@ passes other lookups through, the blocklist compiler plugged in, then SafeSearch
 rewrites. On 22 December, it was running on both Singapore servers and the
 first Tokyo server.
 
+I didn't know how to write a DNS listener from scratch, and I didn't have to.
+I found [Hickory DNS](https://github.com/hickory-dns/hickory-dns), a Rust DNS
+library that felt like Axum, the web framework I already knew, but for DNS:
+it handles the protocol, and I write a handler that decides the answer. That
+let me spend my time on the part that was actually mine.
+
 Two decisions made most of the difference.
 
 **Keep the list on disk.** Instead of holding millions of domains in memory, the
-new server keeps them in [RocksDB](https://rocksdb.org), an embedded database
-on disk. When it needs to check a domain, it asks the database, and the
-operating system keeps the frequently used parts cached in memory on its own.
-Most lookups are for a small set of popular domains, so the part of the list
-that actually needs to be in memory at any moment is tiny.
+new server keeps them in an embedded database on disk. My first try was SQLite,
+but I couldn't get the swap (below) to work correctly with it. I'd seen
+[RocksDB](https://rocksdb.org) mentioned online, so I gave it a go, and it fit
+much better. Every check the server makes is a simple lookup of a key, a
+domain name, which is exactly what RocksDB is built for. When it needs to check
+a domain, it asks the database, and the operating system keeps the frequently
+used parts cached in memory on its own. Most lookups are for a small set of
+popular domains, so the part of the list that actually needs to be in memory at
+any moment is tiny.
 
 **Build the new list next to the old one, then swap.** Once a day, the server
 compiles a fresh copy of the list into a new database in the background, while
 the old one keeps answering queries. When the new one is ready, it swaps it in
 all at once. There's no reload, and no moment where BIND is chewing through
-millions of entries and dropping queries.
+millions of entries and dropping queries. With RocksDB, this worked the first
+time.
 
 ## Rolling it out
 
@@ -105,7 +119,9 @@ Much later, I compared it with other DNS filters, using the full Bancuh list of
 The engines that keep the whole list in memory needed 600 MB to a gigabyte.
 bancuh-dns needed about 40 MB. That isn't because it's clever. Pi-hole, which
 also keeps its list on disk, needed even less, though it can't block wildcard
-domains, which make up about 40% of the list. It's a narrow tool, built for
+domains, which make up about 40% of the list. When I wrote bancuh-dns, I
+didn't know whether other filters could handle wildcards at all. It turned out
+some can, in their own ways, but not all. It's a narrow tool, built for
 exactly one job, on exactly one kind of cheap server.
 
 It isn't finished, either. On a single-CPU server, compiling the new list still
