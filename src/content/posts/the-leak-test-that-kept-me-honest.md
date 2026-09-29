@@ -96,6 +96,16 @@ arrangement: bundle BIND inside the same image as my server, listening only
 locally. Two days after that, every server was resolving for itself again
 ([#200](https://github.com/ragibkl/adblock-dns-server/issues/200)).
 
+Bundling them meant two programs in one container, and I'd been burned by that
+before. In 2022, a shell script ran BIND next to the updater, and when BIND was
+killed, the script didn't notice: the container kept running with no DNS
+server inside it. This time, I made my Rust program the one in charge. It
+starts BIND itself, as a child process. When Docker asks the container to stop,
+my program shuts BIND down with it. And if BIND ever dies on its own, my program
+notices, shuts itself down too, and lets Docker restart the whole container
+cleanly. In effect, my DNS server became a tiny service manager for its own
+resolver.
+
 ## The leak test that wouldn't load
 
 In August 2026, Tomatoide opened an issue I didn't expect
