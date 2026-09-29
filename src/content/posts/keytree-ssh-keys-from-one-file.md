@@ -20,10 +20,8 @@ the key along was simply the easy option, and I took it.
 
 In November 2025, two things happened at once. I was rebuilding my homelab
 as a set of fresh virtual machines, and I wanted to set up a separate cluster
-with a friend. It would host the website for Silat Cekak Hanafi, the silat
-(Malay martial arts) school where I trained, and later taught. These days my
-part is looking after the website and its domain. My friend needed to be able
-to log in to that cluster too.
+with a friend, to host a website for a community we're both part of. My
+friend needed to be able to log in to that cluster too.
 
 Adding their key by hand to each machine, and then remembering to remove it
 later, didn't appeal. But GitHub already publishes everyone's public SSH keys:
