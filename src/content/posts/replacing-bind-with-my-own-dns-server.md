@@ -72,8 +72,7 @@ any moment is tiny.
 compiles a fresh copy of the list into a new database in the background, while
 the old one keeps answering queries. When the new one is ready, it swaps it in
 all at once. There's no reload, and no moment where BIND is chewing through
-millions of entries and dropping queries. With RocksDB, this worked the first
-time.
+millions of entries and dropping queries. With RocksDB, the swap worked.
 
 ## Rolling it out
 
