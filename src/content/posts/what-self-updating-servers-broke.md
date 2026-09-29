@@ -154,6 +154,11 @@ disk space the system could use as overflow memory. The Singapore and Tokyo
 servers each got 4 GB of it. A day later, everything was green again. It wasn't
 elegant, but it held.
 
+It held by leaning on that swap harder and harder. By December 2023, one of the
+Singapore servers was using all 3 GB of its usable memory and another 3 GB of
+swap, and BIND alone was holding 2.8 GB of it
+([#191](https://github.com/ragibkl/adblock-dns-server/issues/191)).
+
 ## The bug my habits were hiding
 
 My favourite bug from this period is one that never actually broke anything.
