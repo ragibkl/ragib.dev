@@ -10,8 +10,7 @@ tags: [dns, bancuh-dns, self-hosting]
 covers how it started, on a Raspberry Pi in 2015.*
 
 By early 2017, my ad-blocking DNS had settled into a quiet routine. It ran on
-two small DigitalOcean servers in Singapore, the closest region to me in
-Malaysia, and I finally tidied the code up and
+two small rented servers, and I finally tidied the code up and
 [put it on GitHub](https://github.com/ragibkl/adblock-dns-server). It was
 simple: BIND answered DNS queries and forwarded ordinary ones to Google. A
 Python script downloaded a few blocklists, around 50,000 ad domains in total,
@@ -54,9 +53,13 @@ this little side project to track me down on Facebook. I pointed him to other
 adblock DNS services that would serve him better than I could. He wanted mine.
 
 By then I'd moved to a better-paying job, and USD 10 a month no longer hurt.
-Between that and his persistence, I brought it back, on two DigitalOcean
-servers in Singapore again. Those
-two servers are still running today, as `sg-dns1` and `sg-dns2`.
+Between that and his persistence, I brought it back, on two small DigitalOcean
+servers in Singapore, the closest region to me in Malaysia. Those two servers
+are still running today, as `sg-dns1` and `sg-dns2`.
+
+Years later, going through my old invoices, I found out how long my big
+decision had lasted. The two new servers first appear in late November 2017,
+about two weeks after I published that apology. I'd lasted about two weeks.
 
 ## A persistent user
 
