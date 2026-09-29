@@ -1,6 +1,6 @@
 ---
 title: "Why I built a prayer times app"
-description: "I'd used one free, ad-free prayer times app for years. One New Year's Day it stopped working, and I found out why. simplesolat started as my attempt to follow in its developer's steps."
+description: "The prayer times app I relied on stopped working on New Year's Day 2024, and I found out its developer had passed away months earlier. simplesolat started as my attempt to follow in their steps."
 date: 2026-09-29T21:00:00Z
 draft: true
 tags: [simplesolat, react-native, android]
@@ -32,24 +32,36 @@ about Malaysia, using the official timetable from JAKIM, Malaysia's Islamic
 development department. Cross the border and you're on your own.
 
 In all my years of looking, I found two apps that I thought were genuinely
-good. The one I settled on was built by a developer at a Malaysian university.
-It was free, it had no ads, and it did nearly everything well enough.
+good. The one I settled on was [iSolat](http://ppkt.eng.usm.my/iSolat/),
+published under the name MKMN, with its support pages hosted at Universiti Sains
+Malaysia. It was free, it had no ads, and it did nearly everything well enough.
+It had been downloaded around 380,000 times.
 
 ## New Year's Day
 
-One New Year's Day, I think in 2025, the app stopped working.
+When 2024 arrived, iSolat stopped working. The new year's prayer times simply
+weren't there, and it wouldn't download them.
 
-I emailed the developer to ask whether they needed any help keeping it
-running.
+I emailed the address in the app to report it. The reply came almost
+immediately:
 
-The reply was automatic. The developer had passed away the previous September.
+> Assalamualaikum, Developer asal app ini telah meninggal dunia pada 26.9.2023
+> lepas...
 
-I was devastated. For months after their death, their app had carried on
-quietly reminding thousands of people when to pray, right up until the day it
-stopped.
+*The original developer of this app passed away on 26 September 2023.* The
+reply went on to say that USM had taken the app over, and would update it
+soon.
 
-Later that year, the university they worked at re-released the app and took
-over maintaining its data, so it lives on.
+I was devastated. For more than three months after their death, their app had
+carried on quietly reminding hundreds of thousands of people when to pray,
+right up until the day the data ran out.
+
+I wrote back to send my condolences to the developer's family, and to thank USM
+for keeping the app going. I'm a backend developer, so I offered to help if
+they needed it. A little later, the maintenance was done and the prayer times
+were back. iSolat lives on, looked after by USM.
+
+Al-Fatihah.
 
 ## Following in their steps
 
@@ -96,7 +108,7 @@ That's the next post in this series.
 
 ## Looking back
 
-I still think about that automatic reply. Someone built a small, free, useful
+I still think about that reply. Someone built a small, free, useful
 thing, and it went on helping people after they were gone. I don't know if
 simplesolat will ever reach as many people as their app did. But if it helps
 someone not miss a prayer, on a trip, or on the first day of a new month, then
