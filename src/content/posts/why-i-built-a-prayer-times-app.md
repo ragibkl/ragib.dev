@@ -2,7 +2,7 @@
 title: "Why I built a prayer times app"
 description: "The prayer times app I relied on stopped working on New Year's Day 2024, and I found out its developer had passed away months earlier. simplesolat started as my attempt to follow in their steps."
 date: 2026-09-29T21:00:00Z
-draft: true
+draft: false
 tags: [simplesolat, react-native, android]
 ---
 

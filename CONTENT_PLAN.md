@@ -68,7 +68,7 @@ and benchmarking DNS filters at 8 million entries (once dns-filter-bench exists)
 
 ## Series 2: simplesolat (2025–2026)
 
-1. **Why I built a prayer times app**
+1. **Why I built a prayer times app** (published: `src/content/posts/why-i-built-a-prayer-times-app.md`)
    - `[?]` What existing apps got wrong for me: ads, accuracy, widgets,
      offline, zones?
    - Jul 2025: first version.
