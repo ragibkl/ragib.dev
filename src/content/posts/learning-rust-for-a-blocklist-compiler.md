@@ -91,5 +91,6 @@ Rust went on to become the language I use for most of what I build, including,
 later, the DNS server itself. But it started with a list of URLs, fetched one at
 a time, and a colleague who thought a new language was cool.
 
-Next in the series: what happened when small, cheap servers started compiling
-millions of domains while also answering everyone's DNS queries.
+Next in the series: [what happened](/writing/what-self-updating-servers-broke/)
+when small, cheap servers started compiling millions of domains while also
+answering everyone's DNS queries.

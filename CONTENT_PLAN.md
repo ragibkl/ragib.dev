@@ -42,7 +42,7 @@ read it once as a reader and publish.
      Rust (PR #34, #42), the list compiled at image build and baked into the
      Docker image; Feb 2020 null zone.
    - `[?]` Why Rust, and was it your first Rust project?
-4. **Compiling on start, and what self-updating servers broke**
+4. **Most of my outages were my own updates** (published: `src/content/posts/what-self-updating-servers-broke.md`)
    - May 2021: BIND stops forwarding and resolves from the root itself (#92, PR #105).
    - Jun 2021–Jul 2022: config fetched from GitHub, list compiled when BIND
      starts, servers self-update.
