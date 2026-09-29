@@ -76,8 +76,9 @@ millions of entries and dropping queries. With RocksDB, the swap worked.
 
 ## Rolling it out
 
-A couple of days later, I moved the servers in France over too, and their IPv6
-addresses changed in the process. I also added a second Tokyo server, as I
+A couple of days later, I moved the servers in France over too. Scaleway
+couldn't shrink a server in place, so I rebuilt them on smaller machines, and
+their IPv6 addresses changed in the process. I also added a second Tokyo server, as I
 wrote at the time, "since it's cheaper now".
 
 Then Tomatoide reported something odd: some blocked sites weren't blocked.
@@ -106,11 +107,12 @@ again. That's the next part of this story.
 
 ## The numbers
 
-At the end of 2023, BIND was holding 2.8 GB. Today, the Rust server on each
-Bancuh DNS machine uses somewhere between 85 and 130 MB. Most of the servers
-now have just 1 GB of memory in total, less than they had in 2020, and each
-whole server, including the resolver and the encrypted DNS front end, uses
-under 500 MB.
+At the end of 2023, BIND was holding 2.8 GB. Once the new server had proved
+itself, I did the thing I'd been wanting to do for years: I downsized the
+servers to save money. Today, the Rust server on each Bancuh DNS machine uses
+somewhere between 85 and 130 MB. Most of the servers have just 1 GB of memory
+in total, less than they had in 2020, and each whole server, including the
+resolver and the encrypted DNS front end, uses under 500 MB.
 
 Much later, I compared it with other DNS filters, using the full Bancuh list of
 7.8 million entries on a single-CPU machine
