@@ -155,7 +155,7 @@ servers each got 4 GB of it. A day later, everything was green again. It wasn't
 elegant, but it held.
 
 It held by leaning on that swap harder and harder. By December 2023, one of the
-Singapore servers was using all 3 GB of its usable memory and another 3 GB of
+Singapore servers was using 3 GB of its 4 GB of memory plus another 3 GB of
 swap, and BIND alone was holding 2.8 GB of it
 ([#191](https://github.com/ragibkl/adblock-dns-server/issues/191)).
 
