@@ -89,9 +89,12 @@ server looked healthy and answered nothing.
 This was the part of running Bancuh DNS that felt like real pressure. People
 depended on it, and I wanted it to stay up. But the list kept growing. Much of
 that was Tomatoide's careful work adding good sources, and every new source cost
-memory, and memory cost money. In early 2020, my servers had 2 GB of memory and
-cost USD 10 a month each. By 2022 they had 4 GB, and the Tokyo server had been
-bumped all the way to 8 GB, and it was *still* running out.
+memory, and memory cost money. The two Singapore servers had started out in
+2017 with 512 MB each, at USD 10 a month for the pair. By late 2019 they had
+2 GB each, and the bill was USD 20. In March 2021 I doubled them to 4 GB, and
+the bill doubled to USD 40, then rose to USD 48 when DigitalOcean raised its
+prices in 2022. The Tokyo server had been bumped all the way to 8 GB, and it
+was *still* running out.
 
 I capped how much BIND was allowed to use for its cache, fixed the startup
 script so that if either process died the whole container restarted cleanly,
