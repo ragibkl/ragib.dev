@@ -2,7 +2,7 @@
 title: "The leak test that kept me honest"
 description: "How Bancuh DNS went from passing every lookup to Google, to resolving everything itself, losing that in a rewrite, and getting it back. Nudged at every step by users running DNS leak tests."
 date: 2026-09-29T18:00:00Z
-draft: true
+draft: false
 tags: [dns, bancuh-dns, privacy, unbound, bind]
 ---
 

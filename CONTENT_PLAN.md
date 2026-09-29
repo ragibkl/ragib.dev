@@ -56,7 +56,7 @@ read it once as a reader and publish.
    - Dec 2023: bancuh-dns written in Rust with RocksDB (#191).
    - The catch: replacing BIND also removed recursion, so it forwarded to
      public resolvers again.
-7. **Getting recursion back: BIND inside, then Unbound**
+7. **The leak test that kept me honest** (published as post 6: `src/content/posts/the-leak-test-that-kept-me-honest.md`)
    - Mar 2024: an internal BIND as the resolver behind bancuh-dns (#200).
    - Aug 2026: dnsleaktest.com's malformed EDNS answer, a bug that turned
      failures into empty answers, and the switch to Unbound (#218).
