@@ -137,7 +137,7 @@ internet without a public IP. Told in the order it was built, from
      both routers.
    - `[?]` Is your friend happy to be written about? How the split works in
      practice: who owns what, what they can and can't touch.
-6. **SSH into everything with the keys on GitHub** (see also keytree below)
+6. **SSH into everything with the keys on GitHub** (published as a standalone: `src/content/posts/keytree-ssh-keys-from-one-file.md`)
    - Nov 2025: `github-keys.sh`, an sshd `AuthorizedKeysCommand` that fetched
      `github.com/<user>.keys` for users listed per network.
    - What was wrong with it: the key cache lived on tmpfs, so a reboot while

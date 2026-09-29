@@ -2,7 +2,7 @@
 title: "Letting my servers fetch their own SSH keys"
 description: "For years I copied SSH keys onto every server by hand, and carried my private key from laptop to laptop. A shell script fixed some of that. keytree fixed the rest, by turning the whole thing around."
 date: 2026-09-29T20:00:00Z
-draft: true
+draft: false
 tags: [ssh, homelab, go, keytree]
 ---
 
