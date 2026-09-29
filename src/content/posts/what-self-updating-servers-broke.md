@@ -194,4 +194,4 @@ small servers could spare, and stumbling every time it reloaded the list.
 Swap kept it alive, but it wasn't a fix. The fix, at the end of 2023, was to
 stop using BIND for blocking altogether and write my own DNS server. It did
 the same job in under 500 MB, and instead of reloading a new list, it swapped
-it in while still answering queries. That's the next story.
+it in while still answering queries. [That's the next story](/writing/replacing-bind-with-my-own-dns-server/).

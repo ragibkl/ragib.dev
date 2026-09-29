@@ -52,7 +52,7 @@ read it once as a reader and publish.
 5. **Users asked for DoH and DoT**
    - Feb 2022: dnsdist in front of BIND for DoH/DoT, with certbot.
    - Later dnsdist-acme: in-process ACME, and the logs page.
-6. **Replacing BIND with Rust: from 6+ GB to under 512 MB**
+6. **Replacing BIND with my own DNS server** (published as post 5: `src/content/posts/replacing-bind-with-my-own-dns-server.md`)
    - Dec 2023: bancuh-dns written in Rust with RocksDB (#191).
    - The catch: replacing BIND also removed recursion, so it forwarded to
      public resolvers again.
