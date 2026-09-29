@@ -6,15 +6,21 @@ draft: true
 tags: [simplesolat, react-native, android]
 ---
 
-I'm a Muslim, and I pray five times a day. Each prayer has a window, and the
-times shift a little every day and from place to place. So, like most Muslims
-with a phone, I rely on a prayer times app.
+I'm a Muslim, and I try to pray the five daily prayers on time. I don't always
+manage it. Some days I miss one, and I do my best. Each prayer has a window,
+and the times shift a little every day and from place to place. So, like most
+Muslims with a phone, I rely on a prayer times app.
 
 What I need from one is simple. It should show today's times for exactly where
 I am, with the current prayer highlighted so I can see it at a glance. It
 should remind me when each prayer starts, so I don't miss one. And it needs a
 widget on my home screen, because the whole point is not having to open an
 app to check.
+
+It should also show *Syuruk*, sunrise, which is when the time for the dawn
+prayer, *Subuh*, runs out. Some mornings I pray Subuh late, and the first thing
+I need to know is whether I've still got time or already missed it. Surprisingly
+few apps show it.
 
 That turns out to be surprisingly hard to find.
 
@@ -70,8 +76,8 @@ build something useful, give it away, and keep it going.
 
 I had my own list of what it should be:
 
-- **Simple.** Today's times, the current one in bold, and nothing else in the
-  way.
+- **Simple.** Today's times, all seven of them including Syuruk, the current
+  one in bold, and nothing else in the way.
 - **No ads, and free.**
 - **Private.** Some prayer apps send your GPS location to a server to work out
   which timetable you need. I didn't want mine to send anyone's location
@@ -91,12 +97,14 @@ first couple of days, and prayer notifications a few days after that.
 I didn't start from nothing. A developer named Fareez Iqmal had built a
 similar app, and I first tried using the prayer times API he'd made. His
 approach to zones inspired mine, too. Each country's official timetable is
-published per *zone*, a group of districts that share the same times, and his
-work, with a file describing each country's zones, showed me a clean way to
-handle it.
+published per *zone*, a group of districts that share the same times. His work
+used GeoJSON, a standard format for shapes on a map, to describe where each
+zone's boundaries lie, and that showed me a clean way to find the right zone
+for any location.
 
 In simplesolat, the zone is worked out **on your phone**, by checking your
-location against zone boundaries the app has downloaded. Your location never
+location against those GeoJSON boundaries, which the app downloads once and
+keeps. Your location never
 leaves the device. All it ever asks a server for is the timetable for a
 zone.
 
