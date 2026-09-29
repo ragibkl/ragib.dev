@@ -109,7 +109,9 @@ again. That's the next part of this story.
 
 At the end of 2023, BIND was holding 2.8 GB. Once the new server had proved
 itself, I did the thing I'd been wanting to do for years: I downsized the
-servers to save money. Today, the Rust server on each Bancuh DNS machine uses
+servers to save money. In the same month the new server went live, the two
+Singapore servers went from 4 GB each to 1 GB, and their bill from USD 48 a
+month to USD 12. Today, the Rust server on each Bancuh DNS machine uses
 somewhere between 85 and 130 MB. Most of the servers have just 1 GB of memory
 in total, less than they had in 2020, and each whole server, including the
 resolver and the encrypted DNS front end, uses under 500 MB.
