@@ -1,6 +1,6 @@
 ---
 title: "Most of my outages were my own updates"
-description: "Between 2020 and 2023, almost every Bancuh DNS outage came from the code that updated the servers, not the code that served DNS. A k3s experiment, self-updating servers, the OOM killer, and a certificate bug my own habits were hiding."
+description: "Between 2020 and 2023, almost every Bancuh DNS outage came from the code that updated the servers, not the code that served DNS. A k3s experiment, self-updating servers, the OOM killer, a growing list on a small budget, and a certificate bug my own habits were hiding."
 date: 2026-09-29
 draft: true
 tags: [dns, bancuh-dns, operations, bind]
@@ -81,11 +81,17 @@ ran BIND alongside the self-updater didn't notice. The container stayed up,
 Docker thought everything was fine, and there was no DNS server inside it. The
 server looked healthy and answered nothing.
 
-The Tokyo server had 8 GB of memory, and it was still running out. I capped
-how much BIND was allowed to use for its cache, fixed the startup script so
-that if either process died the whole container restarted cleanly, and watched
-the memory for a week. It held. By September, the Tokyo server was running
-stably on half the memory, 4 GB.
+This was the part of running Bancuh DNS that felt like real pressure. People
+depended on it, and I wanted it to stay up. But the list kept growing. Much of
+that was Tomatoide's careful work adding good sources, and every new source cost
+memory, and memory cost money. In early 2020, my servers had 2 GB of memory and
+cost USD 10 a month each. By 2022 they had 4 GB, and the Tokyo server had been
+bumped all the way to 8 GB, and it was *still* running out.
+
+I capped how much BIND was allowed to use for its cache, fixed the startup
+script so that if either process died the whole container restarted cleanly,
+and watched the memory for a week. It held. By September, the Tokyo server was
+back to 4 GB.
 
 ## The compiler was the other half
 
@@ -97,7 +103,14 @@ server already running BIND, that was often enough to trigger the OOM killer.
 
 So in December 2022, I rebuilt the compiler from scratch as a standalone tool,
 [adblock-list-compiler](https://github.com/ragibkl/adblock-list-compiler), or
-`ablc`, with memory use in mind from the start.
+`ablc`, with memory use in mind from the start. There's an irony in it. Two
+years earlier, I'd rewritten the compiler in Rust to fetch every source at
+once. The new one deliberately went back to fetching them one at a time,
+slower, because doing it all at once cost too much memory
+([#167](https://github.com/ragibkl/adblock-dns-server/issues/167)). It used
+about 220 MB where the old one used about 600 MB. On the first server I tried it
+on, total memory use roughly halved, and I briefly dreamed of going back to
+2 GB servers.
 
 A month later, I noticed that my own connection dropped for about two minutes
 every day ([#172](https://github.com/ragibkl/adblock-dns-server/issues/172)).
@@ -108,6 +121,29 @@ container down with it. A few of the sources were also flaky, returning very
 different lists from one hour to the next, which made each reload slower and
 more disruptive than it needed to be. The fix was unglamorous: retry failed
 downloads, and switch to more stable sources.
+
+## Holding it together with swap
+
+The new compiler bought some time, but the list kept growing. In August 2023,
+encrypted DNS started failing on and off
+([#186](https://github.com/ragibkl/adblock-dns-server/issues/186)). It was
+memory again, failing in two different ways: in France, BIND got stuck and
+stopped answering, and in Singapore, the compiler itself was killed before it
+could finish.
+
+Tomatoide offered to cut down the lists, removing ones already covered by
+bigger lists. I appreciated it, but I didn't think duplicates were the real
+problem. The real problem was the size of the final list, and my budget. As I
+put it at the time:
+
+> To be frank though, the reason we have this issue, is because I only created
+> servers with 4GB of RAM. If I upgraded all the servers to 8GB, the problem
+> will go away, but it will cost me double the money every month!
+
+So I did the cheapest thing that might work: I added swap to every server,
+disk space the system could use as overflow memory. The Singapore and Tokyo
+servers each got 4 GB of it. A day later, everything was green again. It wasn't
+elegant, but it held.
 
 ## The bug my habits were hiding
 
@@ -137,4 +173,7 @@ a little over a minute, until the first compile finishes. It's on my list.
 
 The bigger problem of those years, though, was BIND itself: a general-purpose
 DNS server doing a job it wasn't designed for, and using more memory than my
-small servers could spare. Later in the series: replacing it.
+small servers could spare. Swap kept it alive, but it wasn't a fix. The fix,
+at the end of 2023, was to stop using BIND for blocking altogether, and write
+my own DNS server that did the same job in under 500 MB. That's the next
+story.
