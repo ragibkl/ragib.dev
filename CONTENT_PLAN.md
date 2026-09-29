@@ -102,14 +102,74 @@ Written for other parents of autistic children as much as for developers.
    - `[?]` How it's used day to day, what changed, what other families
      have said.
 
-## Series 4: Homelab (2024?–2026)
+## Series 4: Homelab (2025–2026)
 
-1. **From Fedora Kubernetes to Alpine k3s** `[?]` Dates and what you ran before.
-2. **Public ingress without a public IP**: rathole, then frp through a VPS
-   with the PROXY protocol.
-3. **GitOps with Flux and SOPS, and wildcard certificates with acme-dns**,
-   including the `_acme-challenge` record that hid the wildcard.
-4. **Developing from anywhere with Coder workspaces.**
+One Proxmox box, a network per cluster, and everything reachable from the
+internet without a public IP. Told in the order it was built, from
+`homelab-vm` (Nov 2025–) and `flux-deploy` (Apr 2025–).
+
+1. **The shape of it: one Proxmox host, a network per cluster**
+   - Bridges as networks: vmbr0 is the home LAN, vmbr1 is mine, vmbr2 a
+     friend's. An Alpine router VM per network (`vmbr0-alpine-router-vmbr1`)
+     routes between them; vmbr2 is reached through both routers.
+   - Naming as the map: hostnames start with their network, VMIDs match IPs
+     (VM 1021 is `.21`), and every VM is built from a small shell script
+     (`alpine-common`, Nov 2025).
+   - `[?]` Why Proxmox, and why a network per cluster rather than VLANs or
+     one flat LAN? What the host is (RAM is the limit).
+2. **From Fedora Kubernetes to Alpine k3s**
+   - `flux-deploy` from Apr 2025; the old clusters are in `clusters/archive/`.
+     Alpine k3s VMs from Dec 2025 (`alpine-k3s`): one server, two workers.
+   - `[?]` What you ran before, why it hurt, why Alpine and k3s.
+3. **Public ingress without a public IP**
+   - rathole first, then frp through a small VPS (`frp-tunnel-ingress`,
+     Sep 2025; `alpine-frps`, Nov 2025): haproxy on 80/443 passes TCP with
+     the PROXY protocol, so ingress-nginx still sees real client IPs.
+   - The VPS has no host firewall; the provider's cloud firewall does the job.
+   - `[?]` Why frp over rathole, Cloudflare Tunnel or Tailscale Funnel.
+4. **GitOps with Flux and SOPS, and wildcard certificates**
+   - Dec 2025: Flux, SOPS-encrypted secrets with age, cert-manager.
+   - Sep 2026: wildcard certificates through acme-dns (`acme.ragib.dev`), and
+     the `_acme-challenge` record that silently hid the parent wildcard.
+5. **Hosting a friend's cluster**
+   - vmbr2: its own router, frps VPS (`vmbr2.ingress`), Flux repo and alerts,
+     on the same Proxmox host; kubectl reaches it through a SOCKS tunnel over
+     both routers.
+   - `[?]` Is your friend happy to be written about? How the split works in
+     practice: who owns what, what they can and can't touch.
+6. **SSH into everything with the keys on GitHub** (see also keytree below)
+   - Nov 2025: `github-keys.sh`, an sshd `AuthorizedKeysCommand` that fetched
+     `github.com/<user>.keys` for users listed per network.
+   - What was wrong with it: the key cache lived on tmpfs, so a reboot while
+     GitHub or the internet was down left root with no keys; every GitHub
+     user listed got root on every server of that network.
+   - Sep 2026: replaced by **keytree** (Go, open source): one `keytree.yaml`
+     in a public repo (users, groups, servers by hostname or glob, accounts),
+     synced hourly by every server into a marked block of `authorized_keys`.
+     Fails safe (a fetch error never removes access), refuses symlinks,
+     `revoked:` for single keys.
+   - Testing root writes into other people's home directories: 5,000 random
+     cases, symlinks to a stand-in `/etc/shadow`, crash between write and
+     rename, real sshd logins in Alpine and Ubuntu containers.
+   - The rollout: 21 servers (13 homelab VMs, 2 VPSes, 7 Bancuh DNS nodes) in
+     a day, each with a spare SSH connection held open and a fresh-login test
+     before removing the old command. And the 13 minutes where deleting the
+     old user lists early would have locked out any rebooting VM.
+   - `[?]` Why not Tailscale SSH, Teleport or SSH certificates? Would you use
+     it at work?
+7. **Developing from anywhere with Coder**
+   - Sep 2026: Coder on an Ubuntu VM (Sysbox, because Alpine can't), GitHub
+     login through your own OAuth app, commit signing with the workspace key,
+     wildcard app URLs through the same frp ingress.
+   - `[?]` What you develop on, and from where (phone, laptop, work machine).
+8. **Remote access and the rest**: OpenVPN VMs per network (Dec 2025), ddns,
+   Jellyfin and its decommissioning, what fits in the RAM that's left.
+   `[?]` Which of these are worth a post of their own.
+
+Side posts, any time: monitoring without Prometheus (private Gatus per
+cluster, Flux alerts to Telegram); and **Rolling out a security fix to a public
+DNS service** (Bancuh port 1153, Sep 2026: found from outside, fixed one node
+at a time, and the ~75 s unfiltered window every restart revealed, #220).
 
 ## One-offs
 
@@ -127,5 +187,7 @@ Series can interleave. Suggested start:
 1. Bancuh DNS #1: everything else in that series depends on it.
 2. GibTalk #1: the one most likely to help someone.
 3. simplesolat #1.
+4. Homelab #6 (keytree) can go early and stand alone: it's the freshest, and
+   the tool is public for others to use.
 
 Then continue each series in order.
