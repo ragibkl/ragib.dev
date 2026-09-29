@@ -68,6 +68,11 @@ server could download the configuration, compile the new list, and load it
 without stopping. By July 2022, every server ran that way, and the two-minute
 silences were gone. I closed the issue with a thank-you for the idea.
 
+Mostly gone, anyway. Loading a new list no longer meant restarting BIND, but
+it still meant BIND *reloading* it, and reloading a zone of millions of
+entries made it stumble. For a short while after each update, queries could
+still go unanswered.
+
 ## Then the servers started dying
 
 Within a month, a user reported that the Tokyo server kept crashing, and so did
@@ -111,6 +116,10 @@ slower, because doing it all at once cost too much memory
 about 220 MB where the old one used about 600 MB. On the first server I tried it
 on, total memory use roughly halved, and I briefly dreamed of going back to
 2 GB servers.
+
+That fixed the compile step. It didn't fix the reload: once the new list was
+ready, BIND still had to load millions of entries, and that still caused short
+cuts.
 
 A month later, I noticed that my own connection dropped for about two minutes
 every day ([#172](https://github.com/ragibkl/adblock-dns-server/issues/172)).
@@ -173,7 +182,8 @@ a little over a minute, until the first compile finishes. It's on my list.
 
 The bigger problem of those years, though, was BIND itself: a general-purpose
 DNS server doing a job it wasn't designed for, and using more memory than my
-small servers could spare. Swap kept it alive, but it wasn't a fix. The fix,
-at the end of 2023, was to stop using BIND for blocking altogether, and write
-my own DNS server that did the same job in under 500 MB. That's the next
-story.
+small servers could spare, and stumbling every time it reloaded the list.
+Swap kept it alive, but it wasn't a fix. The fix, at the end of 2023, was to
+stop using BIND for blocking altogether and write my own DNS server. It did
+the same job in under 500 MB, and instead of reloading a new list, it swapped
+it in while still answering queries. That's the next story.
