@@ -165,3 +165,7 @@ I also learned that privacy isn't a switch you flip once. I had it in 2021, lost
 it in a rewrite two years later without thinking much about it, and needed a
 user to remind me. A rewrite is a good time to ask not just "does it still
 work?", but "does it still keep my promises?"
+
+Next in the series: [users asked for encrypted DNS](/writing/users-asked-for-encrypted-dns/),
+how DoH and DoT came to Bancuh DNS, and the small Rust front end that grew
+around them.
