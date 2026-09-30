@@ -34,7 +34,7 @@ whole thing.
 ## Where it is now
 
 Bancuh DNS today is seven small servers in four places: two in Singapore, two
-in Tokyo, two in Paris and one in Dallas. Each one blocks about five million
+in Tokyo, two in Paris and one in Dallas. Each one blocks about seven million
 domains, answers plain DNS, DNS-over-TLS and DNS-over-HTTPS, and resolves
 everything itself. Most of them have 1 GB of memory, and use less than half
 of it.
