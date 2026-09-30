@@ -72,7 +72,7 @@ and benchmarking DNS filters at 8 million entries (once dns-filter-bench exists)
    - `[?]` What existing apps got wrong for me: ads, accuracy, widgets,
      offline, zones?
    - Jul 2025: first version.
-2. **v1: an app and an API with Postgres**
+2. **One country at a time** (published: `src/content/posts/one-country-at-a-time.md`)
    - Nov 2025: simplesolat-api in Rust, with Postgres tables for zones and
      prayer times, plus sync workers.
    - Mar 2026: Play Store listing.
