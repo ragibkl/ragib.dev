@@ -49,7 +49,7 @@ read it once as a reader and publish.
    - What broke: memory and OOM kills (#154, #162), 2–3 min downtime per
      update (#57, #58), certificates not reloading (#148), daily drops from a
      panicking fetch (#172).
-5. **Users asked for DoH and DoT**
+5. **Users asked for encrypted DNS** (published as post 7: `src/content/posts/users-asked-for-encrypted-dns.md`)
    - Feb 2022: dnsdist in front of BIND for DoH/DoT, with certbot.
    - Later dnsdist-acme: in-process ACME, and the logs page.
 6. **Replacing BIND with my own DNS server** (published as post 5: `src/content/posts/replacing-bind-with-my-own-dns-server.md`)
