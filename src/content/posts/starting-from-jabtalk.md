@@ -177,3 +177,7 @@ a voice for each language, and pictures you can find without leaving the app.
 Those pictures are where the next post picks up. Every word on every board
 points at a picture on a server somewhere, and for the first few months, that
 server wasn't mine.
+
+Next in the series: [where the pictures come from](/writing/where-the-pictures-come-from/),
+from borrowing other people's servers to hosting the symbols myself, and
+teaching the search what's in each picture.

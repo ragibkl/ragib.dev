@@ -94,7 +94,7 @@ Written for other parents of autistic children as much as for developers.
 1. **Building an AAC app for my kids** (published: `src/content/posts/building-an-aac-app-for-my-kids.md`)
    - `[?]` The personal story: what your child needed, what you tried
      (JABtalk and others), and what was missing.
-2. **Starting from JABtalk** (drafted: `src/content/posts/starting-from-jabtalk.md`), Jul 2023 – Feb 2024
+2. **Starting from JABtalk** (published: `src/content/posts/starting-from-jabtalk.md`), Jul 2023 – Feb 2024
    - JABtalk as the blueprint. Kept: folders, the passcode gate, backup and
      restore (used to copy boards between two tablets). Changed: backups as
      hand-editable YAML (which became templates), a language per word instead
@@ -103,7 +103,7 @@ Written for other parents of autistic children as much as for developers.
    - Sep 2023: a Play Store review from a parent who lost everything past
      AsyncStorage's ~2 MB; storage moved to files in Oct (#8).
    - Feb 2024: requests from parents and teachers at Permata Kurnia (#10–#19).
-3. **Where the pictures come from** (Aug 2023 – Sep 2026)
+3. **Where the pictures come from** (published: `src/content/posts/where-the-pictures-come-from.md`), Aug 2023 – Sep 2026
    - senteacher.org as a test (requests started failing, the API changed),
      briefly opensymbols.org, then api-gibtalk in Rust (Oct 2023): fast, and
      picture URLs live on every device and in every template, so they must
