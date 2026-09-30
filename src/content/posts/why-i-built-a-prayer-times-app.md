@@ -116,7 +116,7 @@ The first version got its timetables from an API I wrote myself, in Rust. Later
 I realised I didn't need an API at all, only static files that anyone could
 download. That turned out to be simpler, cheaper, and even more private. It's
 also how simplesolat came to support official timetables for nine countries.
-That's the next post in this series.
+That's the story of the next two posts in this series.
 
 ## Looking back
 
@@ -129,3 +129,7 @@ I'm following in their steps the best way I know how.
 simplesolat is free, with no ads, on
 [Google Play](https://play.google.com/store/apps/details?id=com.simplesolat.app),
 and the code is [on GitHub](https://github.com/ragibkl/simplesolat).
+
+Next in the series: [one country at a time](/writing/one-country-at-a-time/),
+the first version, the simplest backend I knew, and why every new country cost
+more than it should have.
