@@ -53,8 +53,8 @@
   featured: true
   tech: [React Native, Expo, TypeScript, Rust]
   links:
-    - label: gibtalk.ragib.dev
-      href: https://gibtalk.ragib.dev
+    - label: gibtalk.com
+      href: https://gibtalk.com
     - label: Google Play
       href: https://play.google.com/store/apps/details?id=com.ragibkl.GibTalk
     - label: App Store

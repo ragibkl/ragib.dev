@@ -172,7 +172,7 @@ Then we noticed nothing in the app actually loaded that template any more,
 and deleted it. But no GibTalk template depends on someone else's server now.
 
 The same week, the search got a proper home at
-[gibtalk.ragib.dev/symbols](https://gibtalk.ragib.dev/symbols/), with the free
+[gibtalk.com/symbols](https://gibtalk.com/symbols/), with the free
 API documented for anyone who wants to use it in their own project. That page
 also credits the three libraries and their licences. None of these pictures
 are my work. ARASAAC, Mulberry and Tawasol were drawn by other people and
