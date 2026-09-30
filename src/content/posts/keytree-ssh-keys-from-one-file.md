@@ -126,7 +126,7 @@ too much like "allow this user" to be safe.
 
 ## The rollout
 
-Over two days I moved 21 servers to keytree: my homelab machines, two small
+Over two days I moved 20+ servers to keytree: my homelab machines, two small
 VPSes, and all seven Bancuh DNS servers. The one thing I was careful about was
 the order. The old script fetched its user lists at login time, so I couldn't
 delete those lists until the very last machine had switched over. Deleting
