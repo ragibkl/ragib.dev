@@ -94,13 +94,30 @@ Written for other parents of autistic children as much as for developers.
 1. **Building an AAC app for my kids** (published: `src/content/posts/building-an-aac-app-for-my-kids.md`)
    - `[?]` The personal story: what your child needed, what you tried
      (JABtalk and others), and what was missing.
-2. **Building it**
-   - Jul 2023 onward: React Native/Expo, words and pictures spoken aloud
-     (text-to-speech), editable word sets, backup and restore, ready-made
-     word sets; a Rust API for searchable symbols.
-3. **Living with it**
+2. **Starting from JABtalk** (drafted: `src/content/posts/starting-from-jabtalk.md`), Jul 2023 – Feb 2024
+   - JABtalk as the blueprint. Kept: folders, the passcode gate, backup and
+     restore (used to copy boards between two tablets). Changed: backups as
+     hand-editable YAML (which became templates), a language per word instead
+     of audio recording, symbol search in the app instead of Google Images in
+     a browser.
+   - Sep 2023: a Play Store review from a parent who lost everything past
+     AsyncStorage's ~2 MB; storage moved to files in Oct (#8).
+   - Feb 2024: requests from parents and teachers at Permata Kurnia (#10–#19).
+3. **Where the pictures come from** (Aug 2023 – Sep 2026)
+   - senteacher.org as a test (requests started failing, the API changed),
+     briefly opensymbols.org, then api-gibtalk in Rust (Oct 2023): fast, and
+     picture URLs live on every device and in every template, so they must
+     never move. Stateless: ARASAAC, Mulberry and Tawasol, downsized and baked
+     into the Docker image.
+   - Filename search, then Apr–May 2026: Claude Code tags every image from
+     what it sees; tags saved as static YAML. Sep 2026: the last senteacher
+     pictures replaced (#26), and the public /symbols/ page.
+4. **Living with it**
    - `[?]` How it's used day to day, what changed, what other families
      have said.
+   - Ends with the template builder (Sep 2026) as an open experiment: the
+     teachers drafted sets in Microsoft Word with the old search; will better
+     tools help them make more?
 
 ## Series 4: Homelab (2025–2026)
 
