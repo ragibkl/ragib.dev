@@ -47,11 +47,13 @@ this myself?
 It turned out it wasn't that hard.
 
 I started in July 2023. The next day, tapping a word spoke it aloud. Within a
-couple of weeks, each word could have its own language, so a Malay word was
+week, each word could have its own language, so a Malay word was
 spoken in Malay and an English word in English, side by side on the same
 screen. That was the thing JABtalk couldn't do for us, and it's still the
-feature I care about most. In Malaysia, lots of families mix languages all
-the time, and the app should too.
+feature I care about most. Malaysia is multicultural, and many families mix
+languages all the time: English and Malay in our house, Tamil or Chinese in
+others. An app that assumes one language doesn't serve them well. The app
+should mix languages too.
 
 By August, you could search a library of open picture symbols instead of
 drawing or photographing everything yourself, or take a photo with the camera
@@ -122,3 +124,7 @@ the price made you pause, GibTalk is free on
 [Android](https://play.google.com/store/apps/details?id=com.ragibkl.GibTalk)
 and [iPhone and iPad](https://apps.apple.com/us/app/gibtalk/id6504814985). It
 might be enough. And if it isn't, I'd like to hear what's missing.
+
+Next in the series: [starting from JABtalk](/writing/starting-from-jabtalk/),
+what I kept from the app we'd been using, what I changed, and what a parent's
+review on the Play Store taught me.
