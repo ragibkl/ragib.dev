@@ -1,6 +1,6 @@
 ---
 title: "The user who wouldn't let me turn it off"
-description: "In 2017 I shut down my free adblock DNS to save money. A user in Vietnam tracked me down on Facebook, and over the next few years, his requests shaped much of what Bancuh DNS became."
+description: "In 2017 I shut down my free adblock DNS to save money. A user in Vietnam tracked me down on Facebook, and over the next few years, their requests shaped much of what Bancuh DNS became."
 date: 2026-09-28T12:00:00Z
 draft: false
 tags: [dns, bancuh-dns, self-hosting]
@@ -35,7 +35,7 @@ post about it. Part of it was an apology:
 The rest of the post was the next best thing I could offer: a guide to running
 your own. Back in 2016, I'd promised to write one someday. Now it was the
 honest answer. If you don't want to depend on a stranger's server, and that
-stranger has just proved he might switch it off, run it yourself. I ended it
+stranger has just switched it off, run it yourself. I ended it
 with:
 
 > Spin up some servers, and go help others block ads.
@@ -44,16 +44,16 @@ I thought that was the end of it.
 
 ## The message
 
-Then a message arrived on Facebook, from someone I'd never met. He was in
-Vietnam, he'd been using my DNS, and it had stopped working. He'd gone looking
+Then a message arrived on Facebook, from someone I'd never met. They were in
+Vietnam, they'd been using my DNS, and it had stopped working. They'd gone looking
 for the person behind it, and found me. Could I please turn it back on?
 
 Honestly, I felt guilty. And I was surprised: someone had cared enough about
-this little side project to track me down on Facebook. I pointed him to other
-adblock DNS services that would serve him better than I could. He wanted mine.
+this little side project to track me down on Facebook. I pointed them to other
+adblock DNS services that would serve them better than I could. They wanted mine.
 
 By then I'd moved to a better-paying job, and USD 10 a month no longer hurt.
-Between that and his persistence, I brought it back, on two small DigitalOcean
+Between that and their persistence, I brought it back, on two small DigitalOcean
 servers in Singapore, the closest region to me in Malaysia. Those two servers
 are still running today, as `sg-dns1` and `sg-dns2`.
 
@@ -65,7 +65,7 @@ about two weeks after I published that apology. I'd lasted about two weeks.
 
 That turned out to be the start of a long conversation.
 
-He asked for malware sites to be blocked, so I added lists for that. By the
+They asked for malware sites to be blocked, so I added lists for that. By the
 middle of 2018, the service's own page promised a "Safe and Ad-free browsing
 experience". It blocked malware, softly blocked adult sites, and told parents
 that on a home router "we can make the internet a little safer for your
@@ -73,18 +73,18 @@ kids". Two years earlier I'd promised to
 stick to ad servers only. It turned out that what people wanted from an ad
 blocker was a safer internet, and I'd drifted there one request at a time.
 
-In early 2020 his requests moved to GitHub, where he opened issue after issue.
-He asked for SafeSearch to be forced on Google and Bing
+In early 2020 their requests moved to GitHub, where they opened issue after issue.
+They asked for SafeSearch to be forced on Google and Bing
 ([#23](https://github.com/ragibkl/adblock-dns-server/issues/23)), so I built it.
-He asked for a "blocked" page with categories, like the commercial filters have
-([#31](https://github.com/ragibkl/adblock-dns-server/issues/31)). He wanted the
+They asked for a "blocked" page with categories, like the commercial filters have
+([#31](https://github.com/ragibkl/adblock-dns-server/issues/31)). They wanted the
 kind of customisation that paid services like NextDNS offer. Some of it I
 built. Some of it was simply beyond what one person could run for free, and I
 had to say no.
 
 ## Too far from Vietnam
 
-The trickiest request was about speed. He watched live-stream sites, and
+The trickiest request was about speed. They watched live-stream sites, and
 through my DNS they loaded painfully slowly
 ([#32](https://github.com/ragibkl/adblock-dns-server/issues/32),
 [#46](https://github.com/ragibkl/adblock-dns-server/issues/46)). Through
@@ -92,28 +92,28 @@ Google's DNS, they were fine.
 
 It took me a while to understand why. Big sites use content delivery networks,
 with copies of their servers all over the world, and they pick which copy to
-send you to based on where your DNS lookup comes from. With my DNS, his
-lookups came from Singapore, so he was sent to servers near Singapore, not
-near him. The DNS answer itself was fast. It just pointed him somewhere far
+send you to based on where your DNS lookup comes from. With my DNS, their
+lookups came from Singapore, so they were sent to servers near Singapore, not
+near them. The DNS answer itself was fast. It just pointed them somewhere far
 away.
 
-The fix was to put a DNS server closer to him. I tried hosting providers in
+The fix was to put a DNS server closer to them. I tried hosting providers in
 Vietnam, but the ones I found didn't allow the ports a DNS server needs. So in
-April 2020 I set up a test server in Tokyo and asked him to try it
-([#53](https://github.com/ragibkl/adblock-dns-server/issues/53)). His verdict
+April 2020 I set up a test server in Tokyo and asked them to try it
+([#53](https://github.com/ragibkl/adblock-dns-server/issues/53)). Their verdict
 came back quickly: fast. That test server is still running, as `jp-dns1`.
 
 Looking back, I can laugh about it. A user nagged me until I gave in, more than
-once. But a surprising amount of Bancuh DNS exists because of him: the
+once. But a surprising amount of Bancuh DNS exists because of them: the
 malware blocking, SafeSearch, and the servers in Tokyo.
 
 ## Not just one user
 
-He wasn't the only one, though he was the loudest. In September 2018, the first
+They weren't the only one, though they were the loudest. In September 2018, the first
 thank-you arrived as a
 [GitHub issue](https://github.com/ragibkl/adblock-dns-server/issues/4) from
 someone I didn't know. In August 2019, a user in France
-[wrote](https://github.com/ragibkl/adblock-dns-server/issues/6) that he'd just
+[wrote](https://github.com/ragibkl/adblock-dns-server/issues/6) that they'd just
 discovered the DNS and was "quite surprised at how fast it is", then sent me a
 list of blocklists to add. There were a few users in France by then, so when I
 set up the Tokyo server, I also set up one in Paris

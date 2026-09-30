@@ -1,117 +1,174 @@
 ---
 title: "Eleven years of running a free DNS service"
-description: "What I learned running Bancuh DNS, a free public adblock DNS service, on my own time and money since 2015."
-date: 2026-09-28
-draft: true
+description: "Looking back at Bancuh DNS after eleven years: what it costs, what it gave me, the promise I didn't keep, and what I'd tell myself in 2015."
+date: 2026-09-30T11:10:00Z
+draft: false
 tags: [dns, bancuh-dns, self-hosting]
 ---
 
-> **Draft: facts and outline, not the post.** Each section has the facts, with
-> links to where they came from, and a question or two. Write each section in
-> your own words, then delete the notes. Set `draft: false` and update `date`
-> to publish. Cut anything that isn't interesting to you.
+*This is part eight, and the last part, of the Bancuh DNS story.
+[Part one](/writing/how-bancuh-dns-started/) starts with a Raspberry Pi in
+2015.*
 
-## How it started
+This week I brought every Bancuh DNS server up to date, one at a time.
 
-- 2015: a Raspberry Pi 2 at home, then two rented servers, offered publicly
-  in the "ADblock your Wifi" blog series (Dec 2015 – Jan 2016). See
-  `sources/2015-bancuh-blog/` and the "how Bancuh DNS started" post.
-- Feb 2017: `adblock-dns-server` created on GitHub.
-- The name: bancuh.com was a spare domain. Users started calling the service
-  "Bancuh DNS" and it stuck. *Bancuh* is Malay for *to mix*, and the
-  blocklist is a mix of dozens of lists.
-- Sept 2018: the first "quick thanks" issue from someone you didn't know
-  ([#4](https://github.com/ragibkl/adblock-dns-server/issues/4)).
-- Today: 7 servers in Singapore (DigitalOcean), Tokyo (Linode), Paris
-  (Scaleway) and Dallas (Linode). About 110 GitHub issues over the years.
+Some of them needed it badly. The two servers in Singapore were still on
+Ubuntu 16.04, and had been running since November 2017. They're the same two
+servers I brought back after the
+[user in Vietnam](/writing/the-user-who-wouldnt-let-me-turn-it-off/) wouldn't
+let me turn the service off. The servers in Tokyo and Dallas were on a version
+of Alpine Linux that had been out of support for almost a year. And on one of
+the Tokyo servers, I found that Docker had never been set to start on boot. I'd
+started it by hand when I built the server, about a thousand days earlier, and
+it had simply never been restarted since. If that server had ever rebooted,
+it would have come back without its DNS.
 
-**Your words:** Why did you build it in the first place? When did you realise
-strangers depended on it? What does it cost you each month?
+Two days and a lot of care later, all seven are on current systems. And the
+thing that struck me most wasn't what was broken. It was how little had gone
+wrong while I wasn't looking. Despite everything in the last seven posts,
+Bancuh DNS mostly just runs.
 
-## Lesson: memory was always the constraint
+It's been eleven years since the Raspberry Pi. This is a look back at the
+whole thing.
 
-- BIND with a multi-million-entry blocklist used a lot of memory
-  ([#191](https://github.com/ragibkl/adblock-dns-server/issues/191)).
-- The list compiler used almost 1 GB to process 2.5 million entries, and the
-  OOM killer took out `named`
-  ([#162](https://github.com/ragibkl/adblock-dns-server/issues/162)).
-- After adding self-updates in 2022, servers kept crashing: `named` was
-  killed, but the container stayed up with no DNS inside it
-  ([#154](https://github.com/ragibkl/adblock-dns-server/issues/154)).
-- Dec 2023: rewrote the filtering server in Rust (`bancuh-dns`) with RocksDB
-  on disk. It now idles at around 100 MB plus the resolver.
-- Later benchmarked against Pi-hole, Blocky and AdGuard Home at 7.8 million
-  entries on 1 vCPU
-  ([COMPARISON.md](https://github.com/ragibkl/bancuh-dns/blob/master/COMPARISON.md)).
+## Where it is now
 
-**Your words:** What did the crashes feel like from your side? Was the Rust
-rewrite about memory, or also about wanting to write Rust?
+Bancuh DNS today is seven small servers in four places: two in Singapore, two
+in Tokyo, two in Paris and one in Dallas. Each one blocks about five million
+domains, answers plain DNS, DNS-over-TLS and DNS-over-HTTPS, and resolves
+everything itself. Most of them have 1 GB of memory, and use less than half
+of it.
 
-## Lesson: most downtime was self-inflicted
+It costs me about USD 56 a month: USD 13 for Singapore, USD 16 for Tokyo and
+Dallas, about USD 26 for Paris, and the domain. That's a bit over USD 650 a
+year. A third of the Paris bill is just the two IPv4 addresses.
 
-- Every blocklist update meant 2–3 minutes of downtime, and users noticed
-  ([#57](https://github.com/ragibkl/adblock-dns-server/issues/57),
-  [#58](https://github.com/ragibkl/adblock-dns-server/issues/58), open for
-  nearly two years).
-- Daily 2-minute drops traced to the hourly compile: a failed fetch of the
-  config made the program panic and the container restart. Some sources were
-  also flaky, so the list changed massively between runs, which made reloads
-  slow ([#172](https://github.com/ragibkl/adblock-dns-server/issues/172)).
-- Certificates weren't reloaded after renewal, so DoH/DoT would have broken
-  every 3 months. You'd been restarting servers by hand monthly without
-  realising that was what kept them working
-  ([#148](https://github.com/ragibkl/adblock-dns-server/issues/148)).
-- Now: the new blocklist is built alongside the old one and swapped in
-  atomically, and certificates are handled in-process by `dnsdist-acme`.
+I don't know how many people use it. There are no accounts, and I've never
+tried to count. My guess is not many. But some do, and a few of them have been
+here for years.
 
-**Your words:** What's the general lesson? Maybe that the risky part of a
-service is the code that changes it, not the code that serves it.
+Most months, I don't touch it. The servers run well on their own, with
+very little attention. The work comes in bursts, when I change something
+properly: a rewrite, a new front end, or a week like this one.
 
-## Lesson: users shape it, and sometimes you say no
+## What it gave me
 
-- SafeSearch for Google and Bing was added at a user's request in 2020
-  ([#23](https://github.com/ragibkl/adblock-dns-server/issues/23)).
-- Tomatoide tuned much of the list over the years, including removing an
-  aggressive list that broke Microsoft sign-in
-  ([#72](https://github.com/ragibkl/adblock-dns-server/issues/72)).
-- A whitelist source was letting Google ads through, so some domains are now
-  force-blocked above the whitelist
-  ([#116](https://github.com/ragibkl/adblock-dns-server/issues/116)).
-- Said no to a lighter, ads-only server because it would double the cost
-  ([#211](https://github.com/ragibkl/adblock-dns-server/issues/211)), and to
-  unblocking Google Ads, because users chose the service expecting them blocked
-  ([#214](https://github.com/ragibkl/adblock-dns-server/issues/214)).
+What do I get out of it? In money or recognition, nothing. I keep it running because people depend on it.
 
-**Your words:** How do you decide what to say yes to? How did it feel to say
-no to people who clearly liked the service?
+That's not the whole truth, though. Bancuh DNS is where I learned
+[Rust](/writing/learning-rust-for-a-blocklist-compiler/), which became the
+language I use for almost everything I build. It taught me how DNS actually
+works, from recursion to certificates. It taught me most of what I know about
+running something for other people. And it's on my own phone: I use its
+DNS-over-TLS through Android's Private DNS setting every day.
 
-## Lesson: privacy is a set of trade-offs you pick
+## What the eleven years taught me
 
-- The early servers forwarded lookups to Google and Cloudflare. A user in
-  France asked for a French resolver instead
-  ([#57](https://github.com/ragibkl/adblock-dns-server/issues/57)).
-- Logs are kept for 10 minutes and only visible to the IP that made the
-  lookups. You wanted none, but without logs nobody can debug a broken app on
-  a phone ([#158](https://github.com/ragibkl/adblock-dns-server/issues/158)).
-- March 2024: stopped forwarding and resolved everything locally with BIND
-  ([#200](https://github.com/ragibkl/adblock-dns-server/issues/200)).
-- 2026: moved to Unbound after BIND refused a malformed answer from
-  dnsleaktest.com's own nameservers, which Unbound tolerates
-  ([#218](https://github.com/ragibkl/adblock-dns-server/issues/218)).
+Looking back over the series, a few things come up again and again.
 
-**Your words:** Where did you draw the line, and why there?
+Users kept it alive, and shaped it. The service exists because a stranger
+tracked me down on Facebook, and most of what it does started as someone
+asking for it.
 
-## Lesson: monitoring has to test what users actually do
+[Most of my outages were my own updates](/writing/what-self-updating-servers-broke/).
+The code that changes a service is riskier than the code that runs it.
 
-- Uptime Kuma couldn't check DoH against current dnsdist, which only speaks
-  RFC 8484 over HTTP/2, and it had no real DoT check. So you wrote
-  [dns-monitor](https://github.com/ragibkl/dns-monitor).
-- A single failed probe used to raise an alert. The three alerts on
-  4 September 2026 were each one failed check that passed on the next round,
-  so it now retries once before reporting.
-- Public status page on Gatus: [status.bancuh.com](https://status.bancuh.com).
+[Privacy isn't something you get once](/writing/the-leak-test-that-kept-me-honest/).
+I had it, lost it in a rewrite, and needed users with a leak test to make me
+earn it back.
 
-## What I'd do differently
+[Some things can't be taken back](/writing/users-asked-for-encrypted-dns/).
+Once people have typed a server's name into their phones, that name has to
+keep working.
 
-**Your words:** Looking back over eleven years, what would you tell yourself
-in 2015?
+And small servers shaped the engineering. Many of the big changes, from
+capping BIND's cache and adding swap to
+[replacing BIND altogether](/writing/replacing-bind-with-my-own-dns-server/),
+came from trying to fit the service into less memory and less money.
+
+## The promise I didn't keep
+
+In 2015, when I first offered the service to strangers, I wrote:
+
+> I won't block download sites, torrents, or do any kind of censorship. For the
+> moment, I am sticking to adservers only.
+
+Bancuh DNS today is a strict family filter. It blocks ads and trackers, but
+also adult sites, gambling, VPNs, other public DNS services, and since
+December 2024, torrent sites and trackers. I promised in the
+[first post](/writing/how-bancuh-dns-started/) to explain how that happened.
+
+The honest answer is trust. I was focused on the engineering, and I had
+neither the time nor the knowledge to build a good blocklist. Tomatoide did.
+Tomatoide started by opening issues and pull requests to tune the lists, and
+at some point I simply gave them push access. Today, Tomatoide has made more
+changes to Bancuh's blocklist than I have. The list drifted from "ads only"
+towards a family filter one reasonable request at a time, and I let it,
+because I trusted the person doing it.
+
+It did mean breaking a promise I'd made in public, even if I'd only made it
+"for the moment". But trusting Tomatoide, and the many others who opened
+issues to report a broken site or suggest a list, made Bancuh far better than
+anything I'd have built on my own. And the
+[filtering page](https://bancuh.com/filtering/) says plainly what it blocks, so
+nobody has to take my old promise on trust.
+
+## Saying no
+
+Over the years I've said no to some things users clearly wanted. A lighter
+server that only blocked ads
+([#211](https://github.com/ragibkl/adblock-dns-server/issues/211)). Unblocking
+Google Ads and Analytics because they broke some sites
+([#214](https://github.com/ragibkl/adblock-dns-server/issues/214)).
+
+The reasons were rarely about the idea itself. Some features aren't worth the
+cost when there's a good workaround: if Bancuh is too strict for one device,
+you can point that device somewhere else. Some just can't be engineered well
+with what I have. And some I couldn't maintain. A second, lighter list would
+need someone to curate it the way Tomatoide curates this one, and I don't know
+how to do that. In #211 I said I'd revisit it if I ever became significantly
+richer. That hasn't happened yet.
+
+For #214, the reason was simpler: people chose Bancuh expecting it to block
+ads and analytics, and I didn't want to change that under them.
+
+## The last year
+
+Most of the recent posts end with me working on something with
+[Claude Code](https://claude.com/claude-code): the leak test bug, the review
+of the front end, and this week's updates across all seven servers. That's not
+a coincidence.
+
+For most of its life, Bancuh DNS was bigger than I could properly look after
+in the time I had. I kept it running, but I rarely looked underneath. Working
+with Claude Code changed that. I can make bigger changes, more safely and more
+smoothly, keep everything up to date, and actually fix the things I used to
+work around. It's what makes the service feel sustainable to me now. I love
+what it lets me do.
+
+## What happens next
+
+I'll keep it running for as long as I can. I can afford it now. If money ever
+gets tight, I might have to ask for help. Two people have already suggested
+a "buy me a coffee" link for [simplesolat](/writing/why-i-built-a-prayer-times-app/),
+my prayer times app, and the same idea would apply here. Asking for money for
+a free service still feels wrong to me, but maybe they have a point. I haven't
+decided.
+
+There's also a known problem left to fix: after every restart, a server
+answers for about a minute without its blocklist while it compiles the first
+one ([#220](https://github.com/ragibkl/adblock-dns-server/issues/220)). There
+always seems to be one more.
+
+## A note to 2015
+
+If I could send one message back to the version of me with a Raspberry Pi and
+a borrowed ad list, it would be short.
+
+Plan the architecture before strangers depend on it. Think about how much
+memory and CPU each piece will need when the list is a hundred times bigger,
+because it will be. BIND was never meant to hold millions of blocked domains,
+and I paid for that for years in bigger servers and swap. Maybe something
+lighter, like dnsmasq, would have been cheaper. I'll never know.
+
+And good luck. You'll need it.
