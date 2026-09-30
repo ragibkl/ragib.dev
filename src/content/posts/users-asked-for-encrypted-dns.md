@@ -238,3 +238,6 @@ The part I'm happiest with is still the simplest one. Type a server name into
 a phone's settings, and ads are blocked everywhere that phone goes. That's the
 version of Bancuh DNS most people will ever see, and it's the one I'd least
 want to break.
+
+Next, and last, in the series: [eleven years of running a free DNS service](/writing/eleven-years-of-bancuh-dns/),
+a look back at the whole thing.

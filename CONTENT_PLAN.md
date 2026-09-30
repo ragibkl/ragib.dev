@@ -60,8 +60,8 @@ read it once as a reader and publish.
    - Mar 2024: an internal BIND as the resolver behind bancuh-dns (#200).
    - Aug 2026: dnsleaktest.com's malformed EDNS answer, a bug that turned
      failures into empty answers, and the switch to Unbound (#218).
-8. **Eleven years of running a free DNS service**: the retrospective. Draft
-   outline in `src/content/posts/eleven-years-of-bancuh-dns.md`.
+8. **Eleven years of running a free DNS service** (published: `src/content/posts/eleven-years-of-bancuh-dns.md`).
+   The series is complete.
 
 Side posts, any time after 5: monitoring DoH properly (dns-monitor, Gatus),
 and benchmarking DNS filters at 8 million entries (once dns-filter-bench exists).
