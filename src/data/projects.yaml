@@ -11,7 +11,7 @@
     DNS-over-TLS and DNS-over-HTTPS. It started as a personal ad-blocking DNS
     server and grew into a filtering server written in Rust, a dnsdist front
     end with automatic certificates, and a blocklist tuned with its users.
-  since: 2017
+  since: 2015
   featured: true
   tech: [Rust, dnsdist, Unbound, Docker]
   links:
