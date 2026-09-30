@@ -170,6 +170,15 @@ Side posts, any time: monitoring without Prometheus (private Gatus per
 cluster, Flux alerts to Telegram); and **Rolling out a security fix to a public
 DNS service** (Bancuh port 1153, Sep 2026: found from outside, fixed one node
 at a time, and the ~75 s unfiltered window every restart revealed, #220).
+The same post, or a follow-up, can cover **bringing all seven nodes up to
+date** (29–30 Sep 2026): Alpine 3.19 (out of support since Nov 2025) to 3.24
+on Linode, where jumping straight to 3.24 broke apk and one node would never
+have restarted Docker after a reboot; the two Singapore nodes rebuilt from
+Ubuntu 16.04 to 24.04 in place, keeping their IPv4 and IPv6 (DigitalOcean
+rebuild, and a forced root password change that blocked even SSH keys); the
+Paris nodes on Scaleway, whose own key agent rewrote `authorized_keys` and
+locked keytree out mid-update. Every node measured from outside: each reboot
+cost 20–110 s, plus the unfiltered window.
 
 ## One-offs
 
