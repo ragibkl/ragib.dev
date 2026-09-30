@@ -76,16 +76,9 @@ and benchmarking DNS filters at 8 million entries (once dns-filter-bench exists)
    - Nov 2025: simplesolat-api in Rust, with Postgres tables for zones and
      prayer times, plus sync workers.
    - Mar 2026: Play Store listing.
-3. **Rethinking the data: static files for nine countries**
-   - Apr 2026: simplesolat-data on Netlify. Official timetables from each
-     country's religious authority, zones mapped with GeoJSON
-     (point-in-polygon), and odd cases like Bosnia's perpetual timetable
-     and Albania using Turkey's Diyanet data.
-   - App 1.1.x reads the CDN directly and stops using the API.
-   - `[?]` What made you move off the API?
-4. **Deleting the database**
-   - Sep 2026: the API drops Postgres and sync, and becomes a stateless proxy
-     over the CDN, kept only for 1.0.x installs.
+3. **Nine countries and no database** (published: `src/content/posts/nine-countries-and-no-database.md`)
+   - Covers the static data (Apr 2026) and deleting the database (Sep 2026);
+     the planned post 4 was folded in. The series is complete.
 
 ## Series 3: GibTalk (2023–)
 

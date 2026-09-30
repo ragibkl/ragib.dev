@@ -116,7 +116,7 @@ The first version got its timetables from an API I wrote myself, in Rust. Later
 I realised I didn't need an API at all, only static files that anyone could
 download. That turned out to be simpler, cheaper, and even more private. It's
 also how simplesolat came to support official timetables for nine countries.
-That's the story of the next two posts in this series.
+That's the story of the rest of this series.
 
 ## Looking back
 

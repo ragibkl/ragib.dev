@@ -141,3 +141,6 @@ saving.
 A couple of weeks later, the fourth country, Sri Lanka, came as a set of
 static files instead, and that changed how I thought about the whole thing.
 That's the next post.
+
+Next, and last, in the series: [nine countries and no database](/writing/nine-countries-and-no-database/),
+how the timetables became static files, and the sixteen phones that kept my API alive.
