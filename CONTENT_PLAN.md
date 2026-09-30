@@ -165,9 +165,75 @@ internet without a public IP. Told in the order it was built, from
 8. **Remote access and the rest**: OpenVPN VMs per network (Dec 2025), ddns,
    Jellyfin and its decommissioning, what fits in the RAM that's left.
    `[?]` Which of these are worth a post of their own.
+9. **The SSD that never heard about the deleted files** (Sep 2026)
+   - The old Jellyfin VM's 4 TB SATA SSD, picked to host self-hosted S3: under
+     a sustained write it stalled for minutes, the kernel reset the link, and
+     ext4 went read-only. SMART was clean; it ran at 69–78 °C.
+   - A controlled write test: 1–2 MB/s, 17 seconds per 1 MB write, heating up
+     while doing almost nothing.
+   - The cause: the Proxmox disk had no `discard=on`, so QEMU dropped every
+     TRIM. After years of downloads coming and going, the drive thought ~3 TB
+     of deleted data was live. One `fstrim` (2.9 TB + 0.7 TB) later: 300–500
+     MB/s, idling at 40 °C instead of 69 °C.
+   - Then checking everything else: every other VM had `discard=on`, but
+     Alpine ships no trim job, and busybox `fstrim` has no `-a` (two rollout
+     attempts that silently did nothing). A weekly job on all 12 Alpine VMs
+     gave back 267 GB of the NVMe thin pool, some of it from inside Longhorn
+     volumes.
+   - How other systems handle it (Ubuntu, Fedora, Debian timers; Windows;
+     Arch leaves it to you), and why `discard` as a mount option isn't the
+     default.
+   - `[?]` Did you know the drive was that slow before? How long had it been
+     like that (Jellyfin era)?
+10. **Bringing Nextcloud's files home** (Sep 2026)
+    - Why S3 in the first place (files pile up forever; restore should be
+      simple) and why it felt slow: measured, 60% of a thumbnail's 250 ms was
+      the round trip to Wasabi.
+    - Shopping for a faster provider, and a measurement mistake worth
+      admitting: anonymous "bucket not found" requests made Wasabi look 50×
+      slower; real reads showed Linode only a little faster. Not worth moving
+      for.
+    - MinIO's community edition had just been archived; Garage instead, on the
+      ex-Jellyfin VM (renamed, upgraded Alpine 3.17 → 3.24 one release at a
+      time, SSH through keytree). One bucket and one key per app.
+    - The detail that could have lost 300k thumbnails: Nextcloud bakes the
+      bucket name into its storage id, so the new bucket had to keep the old
+      name.
+    - The move: 197 GB copied overnight at a 250 Mbit/s cap (the router VM
+      wasn't the bottleneck), 0 differences, under 2 minutes in maintenance
+      mode. Thumbnails 246 → 53 ms, full photos 375 → 56 ms.
+    - Wasabi becomes the offsite copy: hourly `rclone copy`, nightly `sync`,
+      versioning so a sync can never really delete, and a cap on deletions.
+    - `[?]` What felt slow day to day? Anything you'd have done differently?
+11. **Untangling a config carried over from the VM days** (Sep 2026)
+    - Nextcloud had settings in three places: `config.php`, 2019-era copies of
+      the image's config files, and a ConfigMap with credentials in plain text.
+      Placeholder database passwords, and cloud keys with account-wide access
+      shared between clusters.
+    - Rotating to one bucket-scoped key per job, verified with test backups,
+      and a SOPS file whose checksum had been broken since a rename.
+    - Layers with one job each: `config.php` for Nextcloud's own state, `NC_`
+      env for simple settings and secrets, the image's env-driven files for
+      structured ones. Two surprises from reading Nextcloud's code: it writes
+      its whole merged config back to `config.php` on every save (how the
+      duplicates got there), and env names with dots never reach PHP.
+    - Checked by hashing all 47 effective settings before and after.
+    - Also: MariaDB system tables never upgraded since 10.x under a floating
+      `11.4` tag, found only because a dump failed.
+    - `[?]` How the Nextcloud setup started (which VM, which year).
 
 Side posts, any time: monitoring without Prometheus (private Gatus per
-cluster, Flux alerts to Telegram); and **Rolling out a security fix to a public
+cluster, Flux alerts to Telegram; what was removed and why checks beat graphs
+for a homelab); **When Bitnami's images went away** (moving a friend's ERP
+database off `bitnamilegacy/mariadb:10.6` to the official image, with a
+dump, a checked restore and the site's own hard-coded DB host; `[?]` ask the
+friend first); **A caching proxy for WordPress, rebuilt** (the old
+wordpress-proxy image vs. a template for the official nginx image, the cache
+key that could be poisoned, CI that tests a fresh WordPress);
+**Cleaning up a compromised WordPress site** (`[?]` only with the site
+owner's OK, and without details that help an attacker: what gave it away,
+demoting instead of deleting users, rotating everything, and broken images
+left behind by an old media-offload plugin); and **Rolling out a security fix to a public
 DNS service** (Bancuh port 1153, Sep 2026: found from outside, fixed one node
 at a time, and the ~75 s unfiltered window every restart revealed, #220).
 The same post, or a follow-up, can cover **bringing all seven nodes up to
@@ -198,5 +264,7 @@ Series can interleave. Suggested start:
 3. simplesolat #1.
 4. Homelab #6 (keytree) can go early and stand alone: it's the freshest, and
    the tool is public for others to use.
+5. Homelab #9 (TRIM) also stands alone and is useful to anyone on Proxmox;
+   #10 and #11 can follow it as a pair.
 
 Then continue each series in order.
