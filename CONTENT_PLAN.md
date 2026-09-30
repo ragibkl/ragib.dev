@@ -263,6 +263,40 @@ Paris nodes on Scaleway, whose own key agent rewrote `authorized_keys` and
 locked keytree out mid-update. Every node measured from outside: each reboot
 cost 20–110 s, plus the unfiltered window.
 
+Material from 30 Sep 2026 that could close that loop (facts only; what to
+write, and whether it is one post or two, is still to be decided with the
+user):
+
+- **The ~75 s unfiltered window, fixed** (bancuh-dns #13, adblock-dns-server
+  #225, closes #220). Each compile now goes into its own directory with an
+  atomically replaced `current` pointer, so a restart loads the last blocklist
+  and answers filtered within about a second. With nothing saved, the server
+  keeps its port closed rather than answer unfiltered. Tested first as eight
+  Docker Compose scenarios (restart, recreate, SIGTERM and SIGKILL mid-compile,
+  a corrupt pointer, two containers on one volume, repeated swaps), probing a
+  blocked domain every 0.5 s: never unfiltered. A review by a second Claude
+  Code agent caught a crash-loop (a stray file in the directory stopped
+  startup) and an over-broad cleanup before anything shipped. Canary on
+  jp-dns2, then all seven: restarts went from ~75 s unfiltered to 0.5–0.8 s
+  down; each node's first start on the new volume was 55–112 s down, never
+  unfiltered.
+- **A security update found in a log line.** While testing on jp-dns2,
+  dnsdist logged "Security Update Mandatory": all seven ran dnsdist 2.0.4
+  (Alpine 3.23), affected by a High-severity advisory (CVE-2026-52682). Moving
+  dnsdist-acme to Alpine 3.24 gave 2.0.8; canary, then one node at a time,
+  0.5–0.7 s each, cached certificates reused. The same pass fixed a
+  1,024 open-file limit on the Ubuntu nodes.
+- **Four sources that had been dead for months.** bancuh-dns #14 made HTTP
+  error statuses count as fetch failures (a 404 page used to be parsed as an
+  empty list, silently). The first real compile named four 404s: a
+  blocklistproject branch rename (`master` to `main`) and hagezi moving its
+  DGA list to a separate repo. Fixing the URLs (#226, contributor Tomatoide's
+  lists, kept as intended) took the blocklist from 5.0 to 7.2 million distinct
+  domains, for 2 s more compile time and ~16 MB more peak memory. The user
+  decided against size-based sanity checks: sources come and go, configs
+  shrink on purpose, and the behaviour should stay simple and predictable.
+- `[?]` What the user wants to say about it; the humble framing still applies.
+
 ## One-offs
 
 - **An immutable desktop**: Fedora Silverblue with custom BlueBuild and
