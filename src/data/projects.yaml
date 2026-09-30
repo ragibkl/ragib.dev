@@ -34,6 +34,8 @@
   featured: true
   tech: [React Native, Expo, TypeScript, Rust, Python]
   links:
+    - label: simplesolat.com
+      href: https://simplesolat.com
     - label: Google Play
       href: https://play.google.com/store/apps/details?id=com.simplesolat.app
     - label: GitHub
@@ -51,10 +53,12 @@
   featured: true
   tech: [React Native, Expo, TypeScript, Rust]
   links:
-    - label: Website
+    - label: gibtalk.ragib.dev
       href: https://gibtalk.ragib.dev
     - label: Google Play
       href: https://play.google.com/store/apps/details?id=com.ragibkl.GibTalk
+    - label: App Store
+      href: https://apps.apple.com/us/app/gibtalk/id6504814985
     - label: GitHub
       href: https://github.com/ragibkl/GibTalk
 
