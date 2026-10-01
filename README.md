@@ -47,3 +47,9 @@ npm run preview  # serves dist/
 CI builds the site on every pull request and push, then publishes
 `ghcr.io/ragibkl/ragib.dev:sha-<short sha>`. To roll out, set that tag in
 `ragibkl/flux-deploy` (`clusters/vmbr1-k3s/services/ragib-dev/ragib-dev.yaml`).
+
+## Licence
+
+The writing on this site (everything in `src/content/`) is under
+[CC BY 4.0](LICENSE): you can share and adapt it, as long as you credit me and
+link back. The site's code is under the [MIT licence](LICENSE-CODE).
