@@ -8,7 +8,8 @@
   description: >-
     Blocks ads, trackers, malware and adult content for whole networks, with
     nothing to install. Seven servers in four locations, serving plain DNS,
-    DNS-over-TLS and DNS-over-HTTPS. It started as a personal ad-blocking DNS
+    DNS-over-TLS and DNS-over-HTTPS, and answering around six million
+    lookups a day. It started as a personal ad-blocking DNS
     server and grew into a filtering server written in Rust, a dnsdist front
     end with automatic certificates, and a blocklist tuned with its users.
   since: 2015
@@ -29,7 +30,7 @@
     working offline. Uses official timetables for nine countries, gathered
     from each country's religious authority, and calculates times locally
     everywhere else. New countries are added through a data repository
-    without an app update.
+    without an app update. On about 600 phones, mostly in Malaysia.
   since: 2025
   featured: true
   tech: [React Native, Expo, TypeScript, Rust, Python]
@@ -62,15 +63,34 @@
     - label: GitHub
       href: https://github.com/ragibkl/GibTalk
 
-- id: homelab
+- id: keytree
   order: 4
+  name: keytree
+  summary: Log in to all your servers with the SSH keys on your GitHub account.
+  description: >-
+    One keytree.yaml in a public repository says who can log in where: users,
+    groups, and servers by hostname or pattern. Every server syncs it hourly
+    into its own authorized_keys, and a failed fetch never removes access.
+    It looks after the logins on every server I run.
+  since: 2026
+  tech: [Go, SSH]
+  links:
+    - label: GitHub
+      href: https://github.com/ragibkl/keytree
+    - label: The story
+      href: https://ragib.dev/writing/keytree-ssh-keys-from-one-file/
+
+- id: homelab
+  order: 5
   name: Homelab
-  summary: The small cluster at home that runs most of the above.
+  summary: The small cluster at home that runs this site and most of the projects' websites and backends.
   description: >-
     A Proxmox host running small Alpine Linux VMs for the router and a k3s
     cluster managed with Flux, plus a VM for development workspaces. Public
     traffic arrives through an frp tunnel from a small VPS, and wildcard certificates come from a
-    self-hosted acme-dns. This site runs on it.
+    self-hosted acme-dns. It runs this site, the projects' websites, GibTalk's
+    symbol search and Bancuh's status page; Bancuh's DNS servers are rented
+    separately.
   since: 2025
   tech: [Proxmox, Alpine Linux, k3s, Flux, frp]
   links:
