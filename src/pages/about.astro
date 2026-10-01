@@ -6,18 +6,26 @@ import { SITE } from "../lib/content";
 <Base title="About" description="About Ragib Badaruddin and this site.">
   <h1>About</h1>
   <p>
-    I'm Ragib, a software engineer in Malaysia. Outside work, I build and run
-    small things that other people use: a{" "}
-    <a href="/projects/#bancuh-dns">public adblock DNS service</a>, a{" "}
-    <a href="/projects/#simplesolat">prayer times app</a>, an
-    <a href="/projects/#gibtalk">app for communicating without speaking</a>, and
-    the <a href="/projects/#homelab">homelab</a> they mostly run on.
+    I'm Ragib, a software engineer in Malaysia. Outside work, I build and run a
+    few small, free things: a{" "}
+    <a href="/projects/#bancuh-dns">public adblock DNS service</a> I started in
+    2015, a <a href="/projects/#simplesolat">Muslim prayer times app</a>, an{" "}
+    <a href="/projects/#gibtalk">AAC app</a> I first built for my own kids, and{" "}
+    <a href="/projects/#keytree">keytree</a>, a small tool for managing SSH keys.
+    Most of their websites and backends run on a{" "}
+    <a href="/projects/#homelab">homelab</a> at home.
   </p>
   <p>
-    Looking back, that's a lot of things learned the slow way, and most of it
-    only lives in commit messages and old GitHub issues. This site is where I
-    write it down: what I built, what went wrong, and what I'd do differently.
-    Not advice, just notes.
+    They're small. But some people rely on them every day, and I learned early
+    that you don't know who depends on something until you turn it off. So I try
+    to keep them running, keep them free, and be honest about what they can and
+    can't do.
+  </p>
+  <p>
+    Most of what they taught me only lived in commit messages, old GitHub issues
+    and a 2015 blog I had to rescue from the Wayback Machine. This site is where
+    I write it down, in the order it happened: what I built, what went wrong,
+    and what I'd do differently. Not advice, just notes.
   </p>
   <p>
     For my work history, see <a href={SITE.linkedin}>LinkedIn</a>. For code, see{" "}
@@ -27,7 +35,9 @@ import { SITE } from "../lib/content";
   <h2>This site</h2>
   <p>
     Built with <a href="https://astro.build">Astro</a> and served as static
-    files from the homelab, deployed with Flux. No analytics, no cookies. The{" "}
-    <a href={SITE.source}>source is on GitHub</a>.
+    files from my homelab, deployed with Flux. No analytics, no cookies. The{" "}
+    <a href={SITE.source}>source is on GitHub</a>. The writing is{" "}
+    <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and the
+    code is MIT.
   </p>
 </Base>
