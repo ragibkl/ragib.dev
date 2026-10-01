@@ -114,7 +114,7 @@ scratch.
 
 ## Since then
 
-I built a small API of my own for symbol search, and in June 2025, GibTalk
+I built a small API of my own for symbol search, and in August 2024, GibTalk
 arrived on the Apple App Store too. It's still free, with no ads, and the code
 is [on GitHub](https://github.com/ragibkl/GibTalk). As far as I know, the
 centre still uses it today.
