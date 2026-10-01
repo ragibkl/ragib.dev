@@ -50,6 +50,8 @@
     An Augmentative and Alternative Communication app, inspired by JABtalk:
     tap words and pictures to speak them aloud. Word sets can be edited,
     backed up and loaded from ready-made collections. Free, with no ads.
+    On about 1,250 Android devices, almost all in Malaysia, and on iPhone and
+    iPad too.
   since: 2023
   featured: true
   tech: [React Native, Expo, TypeScript, Rust]
