@@ -11,7 +11,7 @@ const posts = (await getPosts()).slice(0, 5);
 const featured = (await getProjects()).filter((p) => p.data.featured);
 ---
 
-<Base>
+<Base description="Notes on things I've built outside work, and what they taught me: a free adblock DNS service, a prayer times app, an AAC app for my kids, and more.">
   <section class="intro">
     <Image
       src={avatar}
