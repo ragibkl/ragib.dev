@@ -98,6 +98,24 @@ img {
   height: auto;
 }
 
+/* A screenshot in a post, with its caption on the next line of the same
+   paragraph. Tall phone screenshots are capped so they don't fill the page. */
+.prose p:has(> img) {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-block: 2rem;
+}
+
+.prose p > img {
+  display: block;
+  margin: 0 auto 0.5rem;
+  max-height: 34rem;
+  width: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
 code {
   font-family: var(--font-mono);
   font-size: 0.9em;
