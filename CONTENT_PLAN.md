@@ -298,7 +298,7 @@ on, and the same workspace can deploy, check the result in a browser, and
 test on a phone. Told from real sessions; every claim must match what was
 actually done (see the dates below).
 
-1. **A workspace that keeps working when I close the laptop**
+1. **A workspace that keeps working when I close the laptop** (published: `src/content/posts/a-workspace-that-keeps-working.md`)
    - Coder on an Ubuntu VM (Sysbox, because Alpine can't), GitHub login
      through your own OAuth app, commit signing with the workspace key,
      wildcard app URLs through the frp ingress (from Homelab #7).
