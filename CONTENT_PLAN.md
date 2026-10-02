@@ -167,7 +167,7 @@ internet without a public IP. Told in the order it was built, from
      old user lists early would have locked out any rebooting VM.
    - `[?]` Why not Tailscale SSH, Teleport or SSH certificates? Would you use
      it at work?
-7. **Developing from anywhere with Coder**
+7. **Developing from anywhere with Coder** (moved to Series 5, post 1)
    - Sep 2026: Coder on an Ubuntu VM (Sysbox, because Alpine can't), GitHub
      login through your own OAuth app, commit signing with the workspace key,
      wildcard app URLs through the same frp ingress.
@@ -289,6 +289,48 @@ user):
   decided against size-based sanity checks: sources come and go, configs
   shrink on purpose, and the behaviour should stay simple and predictable.
 - `[?]` What the user wants to say about it; the humble framing still applies.
+
+## Series 5: Working with Claude Code from a remote workspace (2026)
+
+The workspace, not the laptop, is where the work happens: Claude Code runs in
+a Coder workspace on the homelab, so the laptop can be shut while work goes
+on, and the same workspace can deploy, check the result in a browser, and
+test on a phone. Told from real sessions; every claim must match what was
+actually done (see the dates below).
+
+1. **A workspace that keeps working when I close the laptop**
+   - Coder on an Ubuntu VM (Sysbox, because Alpine can't), GitHub login
+     through your own OAuth app, commit signing with the workspace key,
+     wildcard app URLs through the frp ingress (from Homelab #7).
+   - The point: the session lives on the server. Shut the laptop, check in
+     from a phone, come back to finished work.
+   - `[?]` Why Coder over SSH + tmux, VS Code Remote or Codespaces; when it
+     was set up; the moment you realised you could close the laptop; what you
+     work from now; anything that bit you.
+2. **Deploying without leaving the workspace**
+   - Full GitOps: PR, merge, CI image, image sha bumped in flux-deploy, Flux
+     rolls it out. Examples: gibtalk.com with path-keeping redirects,
+     www.ragib.dev waiting out negative DNS caching, certificates.
+   - Guardrails: secrets in SOPS, no new openings between networks, nothing
+     shipped without the user's "ship it".
+3. **Seeing what it built: a browser in the workspace**
+   - A Chromium container Claude drives (chrome-devtools MCP) and the user
+     watches. First used for verification on 2026-10-02; before that,
+     checks were curl and rendered images only, so don't claim more.
+   - Example site: simplesolat.com. Lighthouse 100 across the board on
+     mobile; picked Malaysia then Gombak (SGR01) and read JAKIM's times
+     back. The honest limit: "Use my location" hung on the browser's
+     permission prompt and froze the zone list until a reload.
+   - Also: the user's local browser agent for Search Console, Play Console
+     and LinkedIn, where their own logins are needed.
+4. **From a crash email to a real phone** (published: `src/content/posts/from-a-crash-email-to-a-real-phone.md`)
+   - Android end to end: crash reports, fixes, EAS builds, release access
+     (rollouts only on the user's word), dhuha and settings, then testing on a
+     spare phone over Wi-Fi adb. Material: `sources/claude-code-app-dev/`
+     (LOCAL ONLY; follow its publish/keep-out rules).
+5. **Looking back** (optional; could close post 1 or 4 instead)
+   - What it's good at, where it still needs a person (pairing codes, install
+     taps, permission prompts, approvals), the cost on the Max plan.
 
 ## One-offs
 
