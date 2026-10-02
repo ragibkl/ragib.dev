@@ -6,6 +6,11 @@ draft: false
 tags: [claude-code, android, expo, simplesolat, gibtalk]
 ---
 
+*This is part four of a short series on working with Claude Code from a
+remote workspace. [Part one](/writing/a-workspace-that-keeps-working/) is why
+the work moved off my laptop, and [part three](/writing/giving-the-workspace-a-browser/)
+gives it a browser.*
+
 For most of the time I've had GibTalk and simplesolat, making a release has
 gone like this. I'd open my laptop, build a development version of the app on
 Expo's servers, install it on my phone, and connect it to the dev server on
