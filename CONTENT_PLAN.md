@@ -313,7 +313,7 @@ actually done (see the dates below).
      www.ragib.dev waiting out negative DNS caching, certificates.
    - Guardrails: secrets in SOPS, no new openings between networks, nothing
      shipped without the user's "ship it".
-3. **Seeing what it built: a browser in the workspace**
+3. **Giving the workspace a browser** (published: `src/content/posts/giving-the-workspace-a-browser.md`)
    - A Chromium container Claude drives (chrome-devtools MCP) and the user
      watches. First used for verification on 2026-10-02; before that,
      checks were curl and rendered images only, so don't claim more.
