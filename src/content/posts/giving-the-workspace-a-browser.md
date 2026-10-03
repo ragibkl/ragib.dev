@@ -8,7 +8,8 @@ tags: [claude-code, coder, browser, testing]
 
 *This is part three of a short series on working with Claude Code from a
 remote workspace. [Part one](/writing/a-workspace-that-keeps-working/) is why
-the work moved off my laptop.*
+the work moved off my laptop, and [part two](/writing/deploying-without-leaving-the-workspace/)
+is how it ships what it builds.*
 
 On my laptop, I'd sometimes let Claude Code use my browser. Some things it can
 fetch with a plain request, but some sites only make sense in a real browser.
