@@ -6,8 +6,9 @@ draft: false
 tags: [homelab, proxmox, alpine, networking]
 ---
 
-*The first part of a series about my homelab. Later parts cover the clusters,
-how it's reached from the internet, and a few things that went wrong.*
+*The first part of a series about my homelab. [Part two](/writing/hosting-from-home-without-a-public-ip/)
+is how it's reached from the internet, and [part three](/writing/the-ssd-that-never-heard-about-the-deleted-files/)
+is a drive that went wrong without a sound.*
 
 Around 2010, in my second year at university, I had some spare cash, and I
 spent it on a gaming PC. An ASUS board, a Core 2 Quad Q9550, 8 GB of DDR2,
