@@ -7,7 +7,8 @@ tags: [homelab, frp, haproxy, kubernetes, networking]
 ---
 
 *Part two of a series about my homelab. [Part one](/writing/from-a-gaming-pc-to-a-homelab/)
-is how it came to be.*
+is how it came to be, and [part three](/writing/the-ssd-that-never-heard-about-the-deleted-files/)
+is about an SSD that was never told about deleted files.*
 
 For years, getting my homelab onto the internet was simple. My home internet
 is Unifi, and on a high enough plan, you get a public IPv4 address. So I
